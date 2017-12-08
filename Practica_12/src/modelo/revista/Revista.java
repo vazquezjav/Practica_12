@@ -1,4 +1,4 @@
-package modelo;
+package modelo.revista;
 
 public class Revista {
 	private Articulo articulo;

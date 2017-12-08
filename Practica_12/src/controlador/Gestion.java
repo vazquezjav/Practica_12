@@ -3,9 +3,9 @@ package controlador;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.Articulo;
-import modelo.Autor;
-import modelo.Revista;
+import modelo.revista.Articulo;
+import modelo.revista.Autor;
+import modelo.revista.Revista;
 
 public class Gestion {
 	private List<Revista> revistas;
