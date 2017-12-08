@@ -7,12 +7,12 @@ import modelo.revista.Articulo;
 import modelo.revista.Autor;
 import modelo.revista.Revista;
 
-public class Gestion {
+public class GestionRevista {
 	private List<Revista> revistas;
 	private List<Articulo> articulos;
 	private List<Autor> autores;
 	
-	public Gestion(){
+	public GestionRevista(){
 		revistas= new ArrayList<Revista>();
 		articulos= new ArrayList<Articulo>();
 		autores= new ArrayList<Autor>();		
