@@ -37,5 +37,7 @@ public class Empresa {
 	public void setDepartamentos(Departamento departamentos) {
 		this.departamentos = departamentos;
 	}
-
+	public String toString() {
+		return nombre;
+	}
 }

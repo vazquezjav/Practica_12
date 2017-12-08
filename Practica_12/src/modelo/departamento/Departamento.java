@@ -1,16 +1,16 @@
 package modelo.departamento;
 
 public class Departamento {
-	private String nombredepa;
+	private String nombreDepa;
 	private String codigo;
 	private Empleado empleados;
 
 	public String getNombredepa() {
-		return nombredepa;
+		return nombreDepa;
 	}
 
 	public void setNombredepa(String nombredepa) {
-		this.nombredepa = nombredepa;
+		this.nombreDepa = nombredepa;
 	}
 
 	public String getCodigo() {
@@ -28,5 +28,7 @@ public class Departamento {
 	public void setEmpleados(Empleado empleados) {
 		this.empleados = empleados;
 	}
-
+	public String toString() {
+		return nombreDepa;
+	}
 }

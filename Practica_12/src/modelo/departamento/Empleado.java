@@ -28,5 +28,7 @@ public class Empleado {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-
+	public String toString() {
+		return nombreEm;
+	}
 }
