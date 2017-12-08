@@ -50,5 +50,7 @@ public class Gestion {
 		}
 		return true;
 	}
-	
+	public void gestionar(){
+//		/kajkjakjkjaksjajskajs
+	}
 }
