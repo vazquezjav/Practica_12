@@ -1,4 +1,5 @@
 package vista;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
@@ -21,12 +22,31 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JInternalFrame;
 
-public class MiVentana extends JInternalFrame implements ActionListener{
+public class MiVentana extends JInternalFrame implements ActionListener {
+
+	private JDesktopPane escritorio;
+
+	public MiVentana() {
+		initComplement();
+	}
+
+	private void initComplement() {
+		// TODO Auto-generated method stub
+		setSize(950, 460);
+		Container c = getContentPane();
+		c.setLayout(new BorderLayout());
+		escritorio = new JDesktopPane();
+		c.add(escritorio, BorderLayout.CENTER);
+
+		JMenuBar barMenu = new JMenuBar();
+		
+
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

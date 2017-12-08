@@ -2,7 +2,7 @@ package modelo.equipo;
 
 import java.util.Date;
 
-public class Ficha_Inscripcion 
+public class FichaInscripcion 
 {
 
 	private Equipo nombreEquipo;
@@ -10,7 +10,7 @@ public class Ficha_Inscripcion
 	private Date fechaInicio;
 	private Date fechaFinalizacion;
 	
-	public Ficha_Inscripcion(Equipo nombreEquipo, Jugador nombreJugador, Date fechaInicio, Date fechaFinalizacion) {
+	public FichaInscripcion(Equipo nombreEquipo, Jugador nombreJugador, Date fechaInicio, Date fechaFinalizacion) {
 		super();
 		this.nombreEquipo = nombreEquipo;
 		this.nombreJugador = nombreJugador;
