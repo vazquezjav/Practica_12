@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -88,7 +89,7 @@ public class VisRevista extends JInternalFrame implements ActionListener{
 		cp2.gridx = 0;
 		cp2.gridy = 2;
 
-		pan.add(autor, cp2);
+		pan.add(etautor, cp2);
 		
 		cp2 = new GridBagConstraints();
 		cp2.gridx = 1;
@@ -133,7 +134,21 @@ public class VisRevista extends JInternalFrame implements ActionListener{
 		}
 	}
 	public void guardar(){
+
+		try{
+			if(gr.validarRevista1(nombre.getText(), editorial.getText(),(Articulo)escojerA.getSelectedItem())){
+				gr.agregarRevista(nombre.getText(), editorial.getText(), (Articulo)escojerA.getSelectedItem());
+				JOptionPane.showMessageDialog(this, "Revista registrada", "Mensaje de información",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+
+			e.printStackTrace();
+		}
 		listar();
+		nombre.setText("");
+		editorial.setText("");
 	}
 	public void listar(){
 		List<Revista> revistas = gr.getRevistas();

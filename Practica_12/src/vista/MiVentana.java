@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JInternalFrame;
 
-public class MiVentana extends JInternalFrame implements ActionListener {
+public class MiVentana extends JFrame implements ActionListener {
 
 	private JDesktopPane escritorio;
 	private GestionRevista gr;

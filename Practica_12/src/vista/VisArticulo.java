@@ -4,14 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -101,7 +104,7 @@ public class VisArticulo extends JInternalFrame implements ActionListener{
 		GridBagConstraints cp3 = new GridBagConstraints();
 		cp3.gridx = 0;
 		cp3.gridy = 0;
-		pan.add(ettema, cp3);
+		pan2.add(ettema, cp3);
 		
 		cp3 = new GridBagConstraints();
 		cp3.gridx = 1;
@@ -126,7 +129,7 @@ public class VisArticulo extends JInternalFrame implements ActionListener{
 		pan2.add(guardar, cp3);
 		
 		pan2.setBorder(BorderFactory.createTitledBorder("Dator Articulo"));
-		cp1.add(pan2,BorderLayout.SOUTH);
+		cp1.add(pan2,BorderLayout.CENTER);
 		
 		guardar.addActionListener(this);
 		guardar.setActionCommand("guardar");
@@ -142,13 +145,26 @@ public class VisArticulo extends JInternalFrame implements ActionListener{
 		System.out.println("evento boton"+comando);
 		switch(comando){
 		case "guardar":
-			guardar();
+				guardar();
 			break;
 		}
 	}
 
-	public void guardar(){
-		gr.agregarArticulo(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(), tema.getText(), idioma.getText());
+	public void guardar() {
+		try{
+			if(gr.validarAutor1(nombreA.getText(), apellidoA.getText(), nacionalidad.getText())){
+				if(gr.validarArticulo1(tema.getText(), idioma.getText())){
+					gr.agregarArticulo(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(), tema.getText(), idioma.getText());
+					JOptionPane.showMessageDialog(this, "Articulo registrado", "Mensaje de información",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		}catch(Exception e){
+			
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+
+			e.printStackTrace();
+		}
 		nombreA.setText("");
 		apellidoA.setText("");
 		nacionalidad.setText("");
@@ -160,7 +176,7 @@ public class VisArticulo extends JInternalFrame implements ActionListener{
 		List<Articulo> articulos = gr.getArticulos();
 		   for(int i=0;i<articulos.size();i++){
 			  Articulo u= articulos.get(i);
-			   System.out.println("Nombre="+u.getTema()+"Idioma="+u.getIdioma()+"Autor="+u.getAutor());
+			   System.out.println("Nombre="+u.getTema()+"apellido="+u.getAutor().getApellido()+"Idioma="+u.getIdioma()+"Autor="+u.getAutor());
 			  
 		   }
 	}
