@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import controlador.GestionDepartamento;
+import controlador.GestionPais;
 import controlador.GestionRevista;
 
 import java.awt.event.ActionEvent;
@@ -30,12 +31,15 @@ public class MiVentana extends JFrame implements ActionListener {
 
 	private JDesktopPane escritorio;
 	private GestionRevista gr;
+	private GestionPais gp;
 	private GestionDepartamento gd;
 
 	public MiVentana() {
 		initComplement();
 		gr = new GestionRevista();
+		gp= new GestionPais();
 		gd=new GestionDepartamento();
+		
 	}
 
 	private void initComplement() {
@@ -72,6 +76,17 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnuVentanaEmpe.setActionCommand("mnuVentanaEmpe");
 		mnuVentanas6.add(mnuVentanaDepa);
 		mnuVentanas6.add(mnuVentanaEmpe);
+		
+		JMenuItem mnuVentanaPais = new JMenuItem("Datos Pais");
+		mnuVentanaPais.addActionListener(this);
+		mnuVentanaPais.setActionCommand("mnuVentanaPais");
+		mnuVentanas.add(mnuVentanaPais);
+		
+		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
+		mnuVentanaProvincia.addActionListener(this);
+		mnuVentanaProvincia.setActionCommand("mnuVentanaProvincia");
+		mnuVentanas.add(mnuVentanaProvincia);
+
 
 		barra.add(mnuVentanas);
 		barra.add(mnuVentanas6);
@@ -100,7 +115,13 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "mnuVentanaEmpe":
 			datoEmpresa();
 			break;
-		}
+		case "mnuVentanaProvincia":
+			datoProvincia();
+			break;
+		case "mnuVentanaPais":
+			datoPais();
+			break;
+						}
 
 	}
 
@@ -122,6 +143,27 @@ public class MiVentana extends JFrame implements ActionListener {
 		escritorio.add(va);
 		try {
 			va.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void datoProvincia(){
+		VisProvincia pr= new VisProvincia(gp);
+		pr.setVisible(true);
+		escritorio.add(pr);
+		try {
+			pr.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void datoPais(){
+		VisPais ps= new VisPais(gp);
+		ps.setVisible(true);
+		escritorio.add(ps);
+		try {
+			ps.setSelected(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

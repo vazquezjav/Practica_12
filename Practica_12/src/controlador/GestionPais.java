@@ -88,11 +88,11 @@ public class GestionPais {
 		return true;
 	}
 
-	public boolean validarProvincia(String nombre) throws Exception {
+	public boolean validarProvincia(Provincia nombre) throws Exception {
 		int n = 1;
 		if (provincias.size() > 0) {
 			for (Provincia pr : provincias) {
-				if (pr.getNombre().endsWith(nombre)) {
+				if (pr.getNombre().equals(nombre)) {
 					n++;
 				}
 			}
@@ -117,4 +117,17 @@ public class GestionPais {
 		}
 		return true;
 	}
+
+	public List<Pais> getPaises() {
+		return paises;
+	}
+
+	public List<Provincia> getProvincias() {
+		return provincias;
+	}
+
+	public List<Canton> getCantones() {
+		return cantones;
+	}
+	
 }
