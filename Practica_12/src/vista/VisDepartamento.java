@@ -57,6 +57,7 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		txtNombreEm = new JTextField(10);
 		txtCedula = new JTextField(10);
 		txtNombreDepa = new JTextField(10);
+		txtListado = new JTextArea(10, 15);
 		dato.setLayout(gridbad);
 		JLabel tex1 = new JLabel(" Nombre del empleado ");
 		gbc.gridx = 0;
@@ -212,6 +213,7 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		try {
 			if (gd.isEsenci2(nombreEm, apellidoEm, cedula, nombreDepa, codigo)) {
 				gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
+				listar();
 				limpiar();
 			}
 
@@ -226,6 +228,7 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 				gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
 				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
 						JOptionPane.INFORMATION_MESSAGE);
+				listar();
 				limpiar();
 			}
 		} catch (Exception e) {

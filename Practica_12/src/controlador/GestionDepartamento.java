@@ -49,7 +49,7 @@ public class GestionDepartamento {
 			file.close();
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 	}
 //metodo para agragar empresa
@@ -69,20 +69,10 @@ public class GestionDepartamento {
 			file.close();
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 	}
-	public List<Departamento> getDepartamento() {
-		return departamentos;
-	}
 
-	public List<Empresa> getEmpresa() {
-		return empresas;
-	}
-
-	public List<Empleado> getEmpleado() {
-		return empleados;
-	}
 	//metodo para validar error del choose
 	public boolean isChoose(Departamento departamento) throws Exception{
 		try {
@@ -141,6 +131,17 @@ public class GestionDepartamento {
 		return true;
 	}
 	
+	public List<Departamento> getDepartamento() {
+		return departamentos;
+	}
+
+	public List<Empresa> getEmpresa() {
+		return empresas;
+	}
+
+	public List<Empleado> getEmpleado() {
+		return empleados;
+	}
 	
 	
 }

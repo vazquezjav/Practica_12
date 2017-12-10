@@ -100,7 +100,7 @@ public class MiVentana extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String comando = e.getActionCommand();
-		System.out.println("Eventos hh menu " + comando);
+		System.out.println(comando);
 
 		switch (comando) {
 		case "mnuVentana1":
