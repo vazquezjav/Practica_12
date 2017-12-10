@@ -57,6 +57,7 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		txtNombre = new JTextField(10);
 		txtRuc = new JTextField(10);
 		txtDireccion = new JTextField(10);
+		txtListado = new JTextArea(10, 15);
 		dato.setLayout(gridbad);
 		JLabel tex1 = new JLabel(" Nombre de la Empresa: ");
 		gbc.gridx = 0;
