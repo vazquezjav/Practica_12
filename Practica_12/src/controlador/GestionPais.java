@@ -13,6 +13,7 @@ public class GestionPais {
 	private List<Pais> paises;
 	private List<Provincia> provincias;
 	private List<Canton> cantones;
+	
 	private String pathPais="archivos/pais/pais.txt";
 	private String pathProvincia= "archivos/pais/provincias.txt";
 	
@@ -68,5 +69,20 @@ public class GestionPais {
 		}catch(Exception e){
 			
 		}
+	}
+	public boolean validarCanton(String nombre) throws Exception{
+		for(Canton ca: cantones){
+			if(ca.getNombre().endsWith(nombre)){
+				return false;
+			}
+			try{
+				if(false){
+					throw new Exception("Revista ya existe");
+				}
+			}catch(Exception e){
+				throw new Exception("no inscrito");
+			}
+		}
+		return true;
 	}
 }
