@@ -152,8 +152,8 @@ public class VisArticulo extends JInternalFrame implements ActionListener{
 
 	public void guardar() {
 		try{
-			if(gr.validarAutor1(nombreA.getText(), apellidoA.getText(), nacionalidad.getText())){
-				if(gr.validarArticulo1(tema.getText(), idioma.getText())){
+			if(gr.validarAutor(nombreA.getText(), apellidoA.getText(), nacionalidad.getText())){
+				if(gr.validarArticulo(tema.getText(), idioma.getText())){
 					gr.agregarArticulo(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(), tema.getText(), idioma.getText());
 					JOptionPane.showMessageDialog(this, "Articulo registrado", "Mensaje de información",
 							JOptionPane.INFORMATION_MESSAGE);
@@ -163,7 +163,7 @@ public class VisArticulo extends JInternalFrame implements ActionListener{
 			
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
 
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		nombreA.setText("");
 		apellidoA.setText("");

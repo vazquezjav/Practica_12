@@ -72,52 +72,54 @@ public class GestionRevista {
 		}
 	}
 
-	public boolean validarAutor1(String nombre, String apellido, String nacionalidad) throws Exception{
-		for(Autor au: autores){
-			if(au.getNombre().equals(nombre)&&au.getApellido().equals(apellido)&&au.getNacionalidad().equals(nacionalidad)){
-				return false;
-			}
-			try{
-				if(false){
-					throw new Exception("Autor ya inscrito");
+	public boolean validarAutor(String nombre, String apellido, String nacionalidad) throws Exception {
+		int n = 1;
+		if (autores.size() > 0) {
+			for (int i = 0; i < autores.size(); i++) {
+				if (nombre.equals(autores.get(i).getNombre()) && apellido.equals(autores.get(i).getApellido())
+						&& nacionalidad.equals(autores.get(i).getNacionalidad())) {
+					n++;
 				}
-			}catch(Exception e){
-				throw new Exception("no inscrito");
-				
+			}
+			if (n > 1) {
+				throw new Exception("El autor ya se encuentra inscrito");
 			}
 		}
 		return true;
 	}
-	public boolean validarArticulo1(String nombre, String idioma) throws Exception{
-		for(Articulo ar:articulos){
-			if(ar.getTema().equals(nombre)&&ar.getTema().equals(idioma)){
-				return false;
-			}
-			try{
-				if(false){
-					throw new Exception("Articulo ya existe");
+
+	public boolean validarArticulo(String nombre, String idioma) throws Exception {
+		int n = 1;
+		if (articulos.size() > 0) {
+			for (Articulo ar : articulos) {
+				if (ar.getTema().equals(nombre) && ar.getTema().equals(idioma)) {
+					n++;
 				}
-			}catch(Exception e){
-				throw new Exception("no inscrito");
+			}
+			if (n > 1) {
+				throw new Exception("El articulo ya se encuentra inscrito");
 			}
 		}
 		return true;
 	}
-	public boolean validarRevista1(String nombre, String editorial, Articulo articulo) throws Exception{
-		for(Revista r: revistas){
-			if(r.getNombre().equals(nombre)&&r.getEditorial().equals(editorial)&&r.getArticulo().equals(articulo)){
-				return false;
-			}
-			try{
-				if(false){
-					throw new Exception("Revista ya existe");
+
+	public boolean validarRevista(String nombre, String editorial, Articulo articulo) throws Exception {
+		int n = 1;
+		if (revistas.size() > 0) {
+			for (Revista r : revistas) {
+				if (r.getNombre().equals(nombre) && r.getEditorial().equals(editorial)) {
+					n++;
 				}
-			}catch(Exception e){
-				throw new Exception("no inscrito");
+			}
+			if (n > 1) {
+				throw new Exception("La revista ya se encuentra inscrita");
 			}
 		}
 		return true;
 	}
+
+
+
 	public List<Revista> getRevistas() {
 		return revistas;
 	}

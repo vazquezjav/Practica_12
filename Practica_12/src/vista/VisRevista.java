@@ -136,7 +136,7 @@ public class VisRevista extends JInternalFrame implements ActionListener{
 	public void guardar(){
 
 		try{
-			if(gr.validarRevista1(nombre.getText(), editorial.getText(),(Articulo)escojerA.getSelectedItem())){
+			if(gr.validarRevista(nombre.getText(), editorial.getText(),(Articulo)escojerA.getSelectedItem())){
 				gr.agregarRevista(nombre.getText(), editorial.getText(), (Articulo)escojerA.getSelectedItem());
 				JOptionPane.showMessageDialog(this, "Revista registrada", "Mensaje de información",
 						JOptionPane.INFORMATION_MESSAGE);
@@ -144,7 +144,7 @@ public class VisRevista extends JInternalFrame implements ActionListener{
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
 
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		listar();
 		nombre.setText("");

@@ -18,6 +18,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import controlador.GestionDepartamento;
 import controlador.GestionRevista;
 
 import java.awt.event.ActionEvent;
@@ -29,10 +30,12 @@ public class MiVentana extends JFrame implements ActionListener {
 
 	private JDesktopPane escritorio;
 	private GestionRevista gr;
+	private GestionDepartamento gd;
 
 	public MiVentana() {
 		initComplement();
-		gr=new GestionRevista();
+		gr = new GestionRevista();
+		gd=new GestionDepartamento();
 	}
 
 	private void initComplement() {
@@ -40,16 +43,14 @@ public class MiVentana extends JFrame implements ActionListener {
 		setSize(950, 460);
 		setTitle("MisVentanas");
 		getContentPane().setLayout(new BorderLayout());
-		
+
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
-		
-		
+
 		escritorio = new JDesktopPane();
 		c.add(escritorio, BorderLayout.CENTER);
 
 		JMenuBar barra = new JMenuBar();
-
 
 		JMenu mnuVentanas = new JMenu("Archivo");
 		JMenuItem mnuVentana1 = new JMenuItem("Datos Articulo");
@@ -61,11 +62,21 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnuVentana2.addActionListener(this);
 		mnuVentana2.setActionCommand("mnuVentana2");
 		mnuVentanas.add(mnuVentana2);
-		
 
-	barra.add(mnuVentanas);
-		
-		///getContentPane().add(barra); error
+		JMenu mnuVentanas6 = new JMenu("Departamento");
+		JMenuItem mnuVentanaDepa = new JMenuItem("Datos Departamento");
+		JMenuItem mnuVentanaEmpe = new JMenuItem("Empresa");
+		mnuVentanaDepa.addActionListener(this);
+		mnuVentanaDepa.setActionCommand("mnuVentanaDepa");
+		mnuVentanaEmpe.addActionListener(this);
+		mnuVentanaEmpe.setActionCommand("mnuVentanaEmpe");
+		mnuVentanas6.add(mnuVentanaDepa);
+		mnuVentanas6.add(mnuVentanaEmpe);
+
+		barra.add(mnuVentanas);
+		barra.add(mnuVentanas6);
+
+		/// getContentPane().add(barra); error
 		setJMenuBar(barra);
 
 	}
@@ -75,7 +86,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		String comando = e.getActionCommand();
 		System.out.println("Eventos hh menu " + comando);
-		
+
 		switch (comando) {
 		case "mnuVentana1":
 			datoArticulo();
@@ -83,33 +94,61 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "mnuVentana2":
 			datoRevista();
 			break;
+		case "mnuVentanaDepa":
+			datoDepartamento();
+			break;
+		case "mnuVentanaEmpe":
+			datoEmpresa();
+			break;
 		}
 
 	}
 
 	public void datoRevista() {
-		VisRevista vr= new VisRevista(gr);
+		VisRevista vr = new VisRevista(gr);
 		vr.setVisible(true);
 		escritorio.add(vr);
 		try {
 			vr.setSelected(true);
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void datoArticulo() {
-		VisArticulo va= new VisArticulo(gr);
+		VisArticulo va = new VisArticulo(gr);
 		va.setVisible(true);
 		escritorio.add(va);
 		try {
 			va.setSelected(true);
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+	}
+
+	private void datoDepartamento() {
+		// TODO Auto-generated method stub
+		VisDepartamento depa = new VisDepartamento(gd);
+		depa.setVisible(true);
+		escritorio.add(depa);
+		try {
+			depa.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void datoEmpresa() {
+		// TODO Auto-generated method stub
+		VisEmpresa emp = new VisEmpresa(gd);
+		emp.setVisible(true);
+		escritorio.add(emp);
+		try {
+			emp.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
