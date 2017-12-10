@@ -27,9 +27,8 @@ public class GestionDepartamento {
 		departamentos = new ArrayList<Departamento>();
 		empleados = new ArrayList<Empleado>();
 	}
-
-	public void agregarDepartamento(String nombreEm, String apellidoEm, String cedula, String nombreDepa, String codigo,
-			Empleado empleado) {
+//metodo para agragar datos del departamento y de el trabajador
+	public void agregarDepartamento(String nombreEm, String apellidoEm, String cedula, String nombreDepa, String codigo) {
 		try {
 			Empleado em = new Empleado();
 			em.setNombreEm(nombreEm);
@@ -53,8 +52,8 @@ public class GestionDepartamento {
 
 		}
 	}
-
-	public void agreagarEmpresa(String nombre, String ruc, String direccion, Departamento departamento) {
+//metodo para agragar empresa
+	public void agregarEmpresa(String nombre, String ruc, String direccion, Departamento departamento) {
 		try {
 			Empresa emp = new Empresa();
 			emp.setNombre(nombre);
@@ -84,4 +83,64 @@ public class GestionDepartamento {
 	public List<Empleado> getEmpleado() {
 		return empleados;
 	}
+	//metodo para validar error del choose
+	public boolean isChoose(Departamento departamento) throws Exception{
+		try {
+			
+		}catch(Exception e){
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if(departamento==null )
+			throw new Exception("NO A LLENADO EL DEPARTAMENTO");
+		return true;
+	}
+	//metodo de validaccion de ruc
+	public boolean isRuc(String ruc) throws Exception{
+		try {
+			int a = Integer.parseInt(ruc);
+		}catch(NumberFormatException e){
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if(ruc.length()!=12)
+			throw new Exception("debe ser de 12 dígitoscon los dos 00 al comienzo");
+		
+		return true;
+	}
+	//metodo de validacion de espacios en blanco
+	public boolean isEsenci(String nombre,String ruc,String direccion) throws Exception{
+		try {
+			
+		}catch(Exception e){
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if(nombre.equals("")|| ruc.equals("") || direccion.equals(""))
+			throw new Exception("ERROR UN COMPONENTE SE ENCUENTRA VACIO");
+		return true;
+	}
+	//validacion de cedula
+	public boolean isCedulaValida(String cedula) throws Exception{
+		try {
+			int a = Integer.parseInt(cedula);
+		}catch(NumberFormatException e){
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if(cedula.length()!=10)
+			throw new Exception("Debe ser de 10 dígitos");
+		
+		return true;
+	}
+	//validacion de espacios vacios
+	public boolean isEsenci2(String nombreEm, String apellidoEm, String cedula, String nombreDepa, String codigo) throws Exception{
+		try {
+			
+		}catch(Exception e){
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if(nombreEm.equals("")|| apellidoEm.equals("") || cedula.equals("")|| nombreDepa.equals("")|| codigo.equals(""))
+			throw new Exception("ERROR UN COMPONENTE SE ENCUENTRA VACIO");
+		return true;
+	}
+	
+	
+	
 }
