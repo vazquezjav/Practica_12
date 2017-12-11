@@ -21,6 +21,16 @@ import javax.swing.JPanel;
 import controlador.GestionDepartamento;
 import controlador.GestionPais;
 import controlador.GestionRevista;
+import vista.Pais.VisPais;
+import vista.Pais.VisProvincia;
+import vista.Pais.VisTablaCanton;
+import vista.Pais.VisTablaPais;
+import vista.Pais.VisTablaProvincia;
+import vista.Revista.VisArticulo;
+import vista.Revista.VisRevista;
+import vista.Revista.VisTablaArticulo;
+import vista.Revista.VisTablaAutor;
+import vista.Revista.VisTablaRevista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -87,11 +97,41 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnuVentanaProvincia.setActionCommand("mnuVentanaProvincia");
 		mnuVentanas.add(mnuVentanaProvincia);
 
+		JMenu Listas = new JMenu("Listas");
+		
+		JMenuItem lisAutores = new JMenuItem("Lista Autores");
+		lisAutores.addActionListener(this);
+		lisAutores.setActionCommand("lisAutores");
+		Listas.add(lisAutores);
+		
+		JMenuItem lisArticulos = new JMenuItem("Lista Articulos");
+		lisArticulos.addActionListener(this);
+		lisArticulos.setActionCommand("lisArticulos");
+		Listas.add(lisArticulos);
+		
+		JMenuItem lisRevistas = new JMenuItem("Lista Revistas");
+		lisRevistas.addActionListener(this);
+		lisRevistas.setActionCommand("lisRevistas");
+		Listas.add(lisRevistas);
+		
+		JMenuItem lisCantones = new JMenuItem("Lista Cantones");
+		lisCantones.addActionListener(this);
+		lisCantones.setActionCommand("lisCantones");
+		Listas.add(lisCantones);
+		
+		JMenuItem lisProvincias = new JMenuItem("Lista Provincias");
+		lisProvincias.addActionListener(this);
+		lisProvincias.setActionCommand("lisProvincias");
+		Listas.add(lisProvincias);
+		
+		JMenuItem lisPaises = new JMenuItem("Lista Paises");
+		lisPaises.addActionListener(this);
+		lisPaises.setActionCommand("lisPaises");
+		Listas.add(lisPaises);
 
 		barra.add(mnuVentanas);
+		barra.add(Listas);
 		barra.add(mnuVentanas6);
-
-		/// getContentPane().add(barra); error
 		setJMenuBar(barra);
 
 	}
@@ -121,7 +161,26 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "mnuVentanaPais":
 			datoPais();
 			break;
-						}
+		case "lisAutores":
+			listaAutor();
+			break;
+		case "lisArticulos":
+			listaArticulo();
+			break;
+		case "lisRevistas":
+			listaRevista();
+			break;
+		case "lisCantones":
+			listaCanton();
+			break;
+		case "lisProvincias":
+			listaProvincia();
+			break;
+		case "lisPaises":
+			listaPais();
+			break;
+		
+			}
 
 	}
 
@@ -192,5 +251,78 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
+	///LISTAS
+	
+	public void listaAutor(){
+		VisTablaAutor ta= new VisTablaAutor(gr);
+		ta.setVisible(true);
+		escritorio.add(ta);
+		try {
+			ta.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void listaArticulo(){
+		VisTablaArticulo tar= new VisTablaArticulo(gr);
+		tar.setVisible(true);
+		escritorio.add(tar);
+		try {
+			tar.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void listaRevista(){
+		VisTablaRevista tr= new VisTablaRevista(gr);
+		tr.setVisible(true);
+		escritorio.add(tr);
+		try {
+			tr.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void listaCanton(){
+		VisTablaCanton tc= new VisTablaCanton(gp);
+		tc.setVisible(true);
+		escritorio.add(tc);
+		try {
+			tc.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void listaProvincia(){
+		VisTablaProvincia tp= new VisTablaProvincia(gp);
+		tp.setVisible(true);
+		escritorio.add(tp);
+		try {
+			tp.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void listaPais(){
+		VisTablaPais tpa= new VisTablaPais(gp);
+		tpa.setVisible(true);
+		escritorio.add(tpa);
+		try {
+			tpa.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 }

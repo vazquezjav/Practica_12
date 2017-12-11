@@ -1,4 +1,4 @@
-package vista;
+package vista.Pais;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -150,6 +150,7 @@ public class VisPais extends JInternalFrame implements ActionListener{
 	}
 	public void guardar(){
 		try{
+			if(gp.validarEspacios(nombreP.getText(), continente.getText(), poblacion.getText(), null, null,null,(Provincia)escojerP.getSelectedItem()))
 			if(gp.validarProvincia((Provincia)escojerP.getSelectedItem())){
 				gp.agregarPais(nombreP.getText(), continente.getText(), poblacion.getText(), (Provincia)escojerP.getSelectedItem());
 				JOptionPane.showMessageDialog(this, "Datos Registrados", "Mensaje de información",

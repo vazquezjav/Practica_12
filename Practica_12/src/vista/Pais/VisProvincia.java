@@ -1,4 +1,4 @@
-package vista;
+package vista.Pais;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -158,10 +158,12 @@ public class VisProvincia extends JInternalFrame implements ActionListener{
 	}
 	public void guardar(){
 		try{
+			if(gp.validarEspacios(nombreP.getText(), codigo.getText(), region.getText(), nombreC.getText(), poblacion.getText(),alcalde.getText(),null)){		
 			if(gp.validarCanton(nombreC.getText())){
 				gp.agregarProvincia(nombreP.getText(), codigo.getText(), region.getText(), nombreC.getText(), poblacion.getText(), alcalde.getText());
 				JOptionPane.showMessageDialog(this, " Registrado", "Mensaje de información",
 						JOptionPane.INFORMATION_MESSAGE);
+			}
 			}
 			
 		}catch(Exception e){

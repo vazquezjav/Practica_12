@@ -1,4 +1,4 @@
-package vista;
+package vista.Revista;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -43,14 +43,14 @@ public class VisRevista extends JInternalFrame implements ActionListener{
 	public VisRevista(GestionRevista gr){
 		this.gr=gr;
 		setSize(400,300);
-		setTitle("Aspirante");
+		setTitle("Revista");
 		initComponents();
 		nombre= new JTextField(10);
 		editorial=new JTextField(10);
 		autor=new JTextField(10);
 		etnombre=new JLabel("Nombre:");
 		eteditorial=new JLabel("Editorial:");
-		etautor=new JLabel("Autor");
+		etautor=new JLabel("Articulo");
 		guardar= new JButton("Guardar");
 		
 		escojerA= new JComboBox();
@@ -136,10 +136,12 @@ public class VisRevista extends JInternalFrame implements ActionListener{
 	public void guardar(){
 
 		try{
+			if(gr.validarEspacios(nombre.getText(), editorial.getText(), null,null,null,(Articulo)escojerA.getSelectedItem())){
 			if(gr.validarRevista(nombre.getText(), editorial.getText(),(Articulo)escojerA.getSelectedItem())){
 				gr.agregarRevista(nombre.getText(), editorial.getText(), (Articulo)escojerA.getSelectedItem());
 				JOptionPane.showMessageDialog(this, "Revista registrada", "Mensaje de información",
 						JOptionPane.INFORMATION_MESSAGE);
+			}
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);

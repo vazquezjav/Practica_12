@@ -72,7 +72,7 @@ public class GestionPais {
 
 		}
 	}
-
+//matodo para validar un Canton
 	public boolean validarCanton(String nombre) throws Exception {
 		int n = 1;
 		if (cantones.size() > 0) {
@@ -87,7 +87,7 @@ public class GestionPais {
 		}
 		return true;
 	}
-
+//metodo para validar una provincia
 	public boolean validarProvincia(Provincia nombre) throws Exception {
 		int n = 1;
 		if (provincias.size() > 0) {
@@ -102,7 +102,7 @@ public class GestionPais {
 		}
 		return true;
 	}
-
+//metodo para validar un pais
 	public boolean validarPais(String nombre) throws Exception {
 		int n = 1;
 		if (paises.size() > 0) {
@@ -117,7 +117,20 @@ public class GestionPais {
 		}
 		return true;
 	}
+//metodo para validar espacios en blanco 
+	
+	public boolean validarEspacios(String nombre, String nombre2, String nombre3, String nombre4, String nombre5, String nombre6,Provincia pro)
+			throws Exception {
+		try {
 
+		} catch (Exception e) {
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if (nombre.equals("") || nombre2.equals("") || nombre3.equals("") || nombre4.equals("") || nombre5.equals("")||pro.equals("")) {
+			throw new Exception("ERROR UN COMPONENTE SE ENCUENTRA VACIO");
+		}
+		return true;
+	}
 	public List<Pais> getPaises() {
 		return paises;
 	}

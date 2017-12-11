@@ -71,7 +71,7 @@ public class GestionRevista {
 			e.printStackTrace();
 		}
 	}
-
+//validar autor
 	public boolean validarAutor(String nombre, String apellido, String nacionalidad) throws Exception {
 		int n = 1;
 		if (autores.size() > 0) {
@@ -87,7 +87,7 @@ public class GestionRevista {
 		}
 		return true;
 	}
-
+//metodo de validar articulo
 	public boolean validarArticulo(String nombre, String idioma) throws Exception {
 		int n = 1;
 		if (articulos.size() > 0) {
@@ -102,7 +102,7 @@ public class GestionRevista {
 		}
 		return true;
 	}
-
+//metodo para validar la revista
 	public boolean validarRevista(String nombre, String editorial, Articulo articulo) throws Exception {
 		int n = 1;
 		if (revistas.size() > 0) {
@@ -117,8 +117,19 @@ public class GestionRevista {
 		}
 		return true;
 	}
-
-
+//metodo para validar los espacion en blanco 
+	
+	public boolean validarEspacios(String nombre, String nombre2, String nombre3, String nombre4, String nombre5,Articulo articulo) throws Exception{
+		try{
+			
+		}catch(Exception e){
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if(nombre.equals("")||nombre2.equals("")||nombre3.equals("")||nombre4.equals("")||nombre5.equals("")||articulo.equals("")){
+			throw new Exception("ERROR UN COMPONENTE SE ENCUENTRA VACIO");
+		}
+		return true;
+	}
 
 	public List<Revista> getRevistas() {
 		return revistas;
