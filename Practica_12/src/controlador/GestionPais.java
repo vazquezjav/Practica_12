@@ -19,14 +19,42 @@ public class GestionPais {
 	private List<Provincia> provincias;
 	private List<Canton> cantones;
 
-	private String pathPais = "C:\\Users\\TOSHIBA\\git\\Practica_12\\Practica_12\\src\\archivos\\Paises.txt";
-	private String pathProvincia="C:\\Users\\TOSHIBA\\git\\Practica_12\\Practica_12\\src\\archivos\\Provincias.txt";
+	private String pathPais = "src/archivos/Paises.txt";
+	private String pathProvincia="src/archivos/Provincias.txt";
 
 	public GestionPais() {
 		paises = new ArrayList<Pais>();
 		provincias = new ArrayList<Provincia>();
 		cantones = new ArrayList<Canton>();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//NO JAVIER NO
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public void agregarProvincia(String nombreP, String codigo, String region, String nombreC, String poblacion,
 			String alcalde) {
@@ -44,7 +72,7 @@ public class GestionPais {
 			pr.setCantones(c);
 			provincias.add(pr);
 
-			FileWriter file = new FileWriter(pathPais, true);
+			FileWriter file = new FileWriter(pathProvincia, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = pr.getNombre() + " " + pr.getCantones() + " " + pr.getRegion() + " " + pr.getCodigo();
 			escr.append("DATOS DE LA PROVINCIA"+"\n");
