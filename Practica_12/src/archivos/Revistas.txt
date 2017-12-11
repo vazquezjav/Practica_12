@@ -1,0 +1,8 @@
+Tema=pl Idioma=pl Nombre Autor=ppl Apellido Autor=pl Nacionalidaad Autor=pl
+Tema=po Idioma=ik Nombre Autor=ok Apellido Autor=oi Nacionalidaad Autor=ol
+Nombre Revista=po Editoria=po Nombre Aticulo=pl
+Nombre Revista=mn Editoria=mn Nombre Aticulo=po
+Tema=etica  Idioma=espaniol Nombre Autor=javier Apellido Autor=vazquez Nacionalidaad Autor=ecuatorian
+Tema=filosofia Idioma=frances Nombre Autor=edurado Apellido Autor=arias Nacionalidaad Autor=ecuatoriana
+Nombre Revista=ciencias Editoria=ups Nombre Aticulo=etica 
+Nombre Revista=Athala Editoria=ups Nombre Aticulo=filosofia

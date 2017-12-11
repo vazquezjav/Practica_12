@@ -1,11 +1,15 @@
 package controlador;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.departamento.Departamento;
 import modelo.revista.Articulo;
 import modelo.revista.Autor;
 import modelo.revista.Revista;
@@ -15,8 +19,8 @@ public class GestionRevista {
 	private List<Articulo> articulos;
 	private List<Autor> autores;
 
-	private String pathRevistas = "revistas.txt";
-	private String pathArticulos = "revistas.txt";
+	private String pathRevistas = "C:\\Users\\TOSHIBA\\git\\Practica_12\\Practica_12\\src\\archivos\\Revistas.txt";
+	private String pathArticulos = "C:\\Users\\TOSHIBA\\git\\Practica_12\\Practica_12\\src\\archivos\\Articulos.txt";
 
 	public GestionRevista() {
 		revistas = new ArrayList<Revista>();
@@ -26,22 +30,25 @@ public class GestionRevista {
 	}
 
 	public void agregarArticulo(String nombreA, String apellido, String nacionalidad, String temaAr, String idioma) {
+
+		Autor au = new Autor();
+		au.setNombre(nombreA);
+		au.setApellido(apellido);
+		au.setNacionalidad(nacionalidad);
+		autores.add(au);
+
+		Articulo ar = new Articulo();
+		ar.setIdioma(idioma);
+		ar.setTema(temaAr);
+		ar.setAutor(au);
+		articulos.add(ar);
 		try {
-			Autor au = new Autor();
-			au.setNombre(nombreA);
-			au.setApellido(apellido);
-			au.setNacionalidad(nacionalidad);
-			autores.add(au);
-
-			Articulo ar = new Articulo();
-			ar.setIdioma(idioma);
-			ar.setTema(temaAr);
-			ar.setAutor(au);
-			articulos.add(ar);
-
 			FileWriter file = new FileWriter(pathArticulos, true);
 			BufferedWriter escr = new BufferedWriter(file);
-			String registro = ar.getTema() + " " + ar.getAutor() + " " + ar.getIdioma();
+			String registro = "Tema=" + ar.getTema() + " " + "Idioma=" + ar.getIdioma() + " " + "Nombre Autor="
+					+ ar.getAutor() + " " + "Apellido Autor=" + ar.getAutor().getApellido() + " "
+					+ "Nacionalidaad Autor=" + ar.getAutor().getNacionalidad();
+			escr.append("DATOS DEL ARTICULO"+"\n");
 			escr.append(registro + "\n");
 			escr.close();
 			file.close();
@@ -60,8 +67,9 @@ public class GestionRevista {
 
 			FileWriter file = new FileWriter(pathRevistas, true);
 			BufferedWriter escr = new BufferedWriter(file);
-			String registro = re.getNombre() + " " + re.getEditorial() + " " + re.getArticulo();
-
+			String registro = "Nombre Revista=" + re.getNombre() + " " + "Editoria=" + re.getEditorial() + " "
+					+ "Nombre Aticulo=" + re.getArticulo();
+			escr.append("DATOS DE LA REVISTA"+"\n");
 			escr.append(registro + "\n");
 			escr.close();
 			file.close();
@@ -71,7 +79,8 @@ public class GestionRevista {
 			e.printStackTrace();
 		}
 	}
-//validar autor
+
+	// validar autor
 	public boolean validarAutor(String nombre, String apellido, String nacionalidad) throws Exception {
 		int n = 1;
 		if (autores.size() > 0) {
@@ -87,7 +96,8 @@ public class GestionRevista {
 		}
 		return true;
 	}
-//metodo de validar articulo
+
+	// metodo de validar articulo
 	public boolean validarArticulo(String nombre, String idioma) throws Exception {
 		int n = 1;
 		if (articulos.size() > 0) {
@@ -102,7 +112,8 @@ public class GestionRevista {
 		}
 		return true;
 	}
-//metodo para validar la revista
+
+	// metodo para validar la revista
 	public boolean validarRevista(String nombre, String editorial, Articulo articulo) throws Exception {
 		int n = 1;
 		if (revistas.size() > 0) {
@@ -117,18 +128,83 @@ public class GestionRevista {
 		}
 		return true;
 	}
-//metodo para validar los espacion en blanco 
-	
-	public boolean validarEspacios(String nombre, String nombre2, String nombre3, String nombre4, String nombre5,Articulo articulo) throws Exception{
-		try{
-			
-		}catch(Exception e){
+	// metodo para validar los espacion en blanco
+
+	public boolean validarEspacios(String nombre, String nombre2, String nombre3, String nombre4, String nombre5)
+			throws Exception {
+		try {
+
+		} catch (Exception e) {
 			throw new Exception("Formato incorrecto, contiene caracteres");
 		}
-		if(nombre.equals("")||nombre2.equals("")||nombre3.equals("")||nombre4.equals("")||nombre5.equals("")||articulo.equals("")){
+		if (nombre.equals("") || nombre2.equals("") || nombre3.equals("") || nombre4.equals("") || nombre5.equals("")) {
 			throw new Exception("ERROR UN COMPONENTE SE ENCUENTRA VACIO");
 		}
 		return true;
+	}
+	// validar choose
+
+	public boolean validarChoose(Articulo articulo) throws Exception {
+		try {
+
+		} catch (Exception e) {
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if (articulo == null)
+			throw new Exception("no ha escojidoun articulo");
+		return true;
+	}
+
+	// validar
+	public boolean validarEspacios1(String nombre, String nombre2) throws Exception {
+		try {
+
+		} catch (Exception e) {
+			throw new Exception("Formato incorrecto, contiene caracteres");
+		}
+		if (nombre.equals("") || nombre2.equals("")) {
+			throw new Exception("ERROR UN COMPONENTE SE ENCUENTRA VACIO");
+		}
+		return true;
+	}
+
+	// leer archivos articulo
+	public String leer() throws IOException {
+		String aux = "";
+		try {
+			FileReader l = new FileReader(pathArticulos);
+			BufferedReader es = new BufferedReader(l);
+			String linea = "";
+			while (linea != null) {
+				linea = es.readLine();
+				aux = aux + "" + linea + "\n";
+
+			}
+			es.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return aux;
+
+	}
+	//leer archivos revista
+	public String leer1() throws IOException {
+		String aux = "";
+		try {
+			FileReader l = new FileReader(pathRevistas);
+			BufferedReader es = new BufferedReader(l);
+			String linea = "";
+			while (linea != null) {
+				linea = es.readLine();
+				aux = aux + "" + linea + "\n";
+
+			}
+			es.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return aux;
+
 	}
 
 	public List<Revista> getRevistas() {

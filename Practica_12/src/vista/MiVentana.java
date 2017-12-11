@@ -86,16 +86,17 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnuVentanaEmpe.setActionCommand("mnuVentanaEmpe");
 		mnuVentanas6.add(mnuVentanaDepa);
 		mnuVentanas6.add(mnuVentanaEmpe);
+
+		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
+		mnuVentanaProvincia.addActionListener(this);
+		mnuVentanaProvincia.setActionCommand("mnuVentanaProvincia");
+		mnuVentanas.add(mnuVentanaProvincia);
 		
 		JMenuItem mnuVentanaPais = new JMenuItem("Datos Pais");
 		mnuVentanaPais.addActionListener(this);
 		mnuVentanaPais.setActionCommand("mnuVentanaPais");
 		mnuVentanas.add(mnuVentanaPais);
-		
-		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
-		mnuVentanaProvincia.addActionListener(this);
-		mnuVentanaProvincia.setActionCommand("mnuVentanaProvincia");
-		mnuVentanas.add(mnuVentanaProvincia);
+	
 
 		JMenu Listas = new JMenu("Listas");
 		

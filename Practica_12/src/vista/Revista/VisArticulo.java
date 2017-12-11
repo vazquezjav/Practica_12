@@ -16,6 +16,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controlador.GestionRevista;
@@ -26,12 +27,13 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 
 	private JTextField nombreA, apellidoA, nacionalidad, idioma, tema;
 	private JLabel etnombre, etapellido, etnacionalidad, etidioma, ettema;
-	private JButton guardar, vacia;
+	private JTextArea listado;
+	private JButton guardar, leer;
 	private GestionRevista gr;
 
 	public void initComponents() {
 		setTitle("Articulo");
-		setSize(300, 400);
+		setSize(400, 400);
 		setClosable(true);
 		setMaximizable(false);
 		setMaximizable(true);
@@ -55,6 +57,8 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 		etidioma = new JLabel("Idioma:");
 		ettema = new JLabel("Tema:");
 		guardar = new JButton("Guardar");
+		leer = new JButton("Leer");
+		listado = new JTextArea(3, 15);
 
 		JPanel pan = new JPanel();
 
@@ -131,8 +135,26 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 		pan2.setBorder(BorderFactory.createTitledBorder("Dator Articulo"));
 		cp1.add(pan2, BorderLayout.CENTER);
 
+		JPanel pan3 = new JPanel();
+		pan3.setLayout(new GridBagLayout());
+		GridBagConstraints cp4 = new GridBagConstraints();
+		cp4.gridx = 0;
+		cp4.gridy = 0;
+		pan3.add(listado, cp4);
+
+		cp4 = new GridBagConstraints();
+		cp4.gridx = 0;
+		cp4.gridy = 1;
+		pan3.add(leer, cp4);
+
+		pan3.setBorder(BorderFactory.createTitledBorder("Leer Datos"));
+		cp1.add(pan3, BorderLayout.SOUTH);
+
 		guardar.addActionListener(this);
 		guardar.setActionCommand("guardar");
+
+		leer.addActionListener(this);
+		leer.setActionCommand("leer");
 
 	}
 
@@ -146,14 +168,23 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 		case "guardar":
 			guardar();
 			break;
+		case "leer":
+			try {
+				leer();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		default:
+			break;
 		}
 	}
 
 	public void guardar() {
-		
 		try {
 			if (gr.validarEspacios(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(), tema.getText(),
-					idioma.getText(),null)) {
+					idioma.getText())) {
 				if (gr.validarAutor(nombreA.getText(), apellidoA.getText(), nacionalidad.getText())) {
 					if (gr.validarArticulo(tema.getText(), idioma.getText())) {
 						gr.agregarArticulo(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(),
@@ -175,6 +206,10 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 		tema.setText("");
 		idioma.setText("");
 		listar();
+	}
+
+	public void leer() throws IOException {
+		listado.append(gr.leer());
 	}
 
 	public void listar() {
