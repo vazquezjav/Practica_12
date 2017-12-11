@@ -26,7 +26,7 @@ import modelo.revista.Articulo;
 
 public class VisPais extends JInternalFrame implements ActionListener {
 
-	private JTextField nombreP, continente, poblacion, provincia;
+	private JTextField nombreP, continente, poblacion;
 	private JLabel etnombreP, etcontinente, etpoblacion, etprovincia;
 	private JButton guardar, leer;
 	private JTextArea listado;;
@@ -185,7 +185,7 @@ public class VisPais extends JInternalFrame implements ActionListener {
 
 	public void guardar() {
 		try {
-			if (gp.validarEspacios1(nombreP.getText(), continente.getText(), poblacion.getText())) {
+			if (gp.validarEspacio1(nombreP.getText(), continente.getText(), poblacion.getText())) {
 				if (gp.validarChoose((Provincia) escojerP.getSelectedItem())) {
 					if (gp.validarProvincia((Provincia) escojerP.getSelectedItem())) {
 						gp.agregarPais(nombreP.getText(), continente.getText(), poblacion.getText(),
@@ -205,6 +205,6 @@ public class VisPais extends JInternalFrame implements ActionListener {
 		poblacion.setText("");
 	}
 	public void leer() throws IOException{
-		listado.append(gp.leer1());
+		listado.append(gp.leerPais());
 	}
 }

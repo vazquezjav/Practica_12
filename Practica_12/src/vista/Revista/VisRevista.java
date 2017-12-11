@@ -171,7 +171,7 @@ public class VisRevista extends JInternalFrame implements ActionListener {
 	public void guardar() {
 
 		try {
-			if (gr.validarEspacios1(nombre.getText(), editorial.getText())) {
+			if (gr.validarEspacio1(nombre.getText(), editorial.getText())) {
 				if (gr.validarChoose((Articulo) escojerA.getSelectedItem())) {
 					if (gr.validarRevista(nombre.getText(), editorial.getText(),
 							(Articulo) escojerA.getSelectedItem())) {
@@ -191,7 +191,7 @@ public class VisRevista extends JInternalFrame implements ActionListener {
 	}
 	public void leer() throws IOException{
 
-		listado.append(gr.leer1());	
+		listado.append(gr.leerRevista());	
 	}
 
 	public void listar() {

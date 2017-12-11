@@ -193,7 +193,7 @@ public class VisProvincia extends JInternalFrame implements ActionListener {
 
 	public void guardar() {
 		try {
-			if (gp.validarEspacios(nombreP.getText(), codigo.getText(), region.getText(), nombreC.getText(),
+			if (gp.validarEspacio(nombreP.getText(), codigo.getText(), region.getText(), nombreC.getText(),
 					poblacion.getText(), alcalde.getText())) {
 				if (gp.validarCanton(nombreC.getText())) {
 					gp.agregarProvincia(nombreP.getText(), codigo.getText(), region.getText(), nombreC.getText(),
@@ -217,7 +217,7 @@ public class VisProvincia extends JInternalFrame implements ActionListener {
 
 	}
 	public void leer() throws IOException{
-		listado.append(gp.leer());
+		listado.append(gp.leerProvincia());
 	}
 
 }

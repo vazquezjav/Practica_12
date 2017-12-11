@@ -126,7 +126,7 @@ public class GestionPais {
 	}
 //metodo para validar espacios en blanco 
 	
-	public boolean validarEspacios(String nombre, String nombre2, String nombre3, String nombre4, String nombre5, String nombre6)
+	public boolean validarEspacio(String nombre, String nombre2, String nombre3, String nombre4, String nombre5, String nombre6)
 			throws Exception {
 		try {
 
@@ -140,7 +140,7 @@ public class GestionPais {
 	}
 	//validar espacios
 	
-	public boolean validarEspacios1(String nombre, String nombre2, String nombre3)
+	public boolean validarEspacio1(String nombre, String nombre2, String nombre3)
 			throws Exception {
 		try {
 
@@ -164,7 +164,7 @@ public class GestionPais {
 		return true;
 	}
 	//leer archivos provincias
-	public String leer() throws IOException {
+	public String leerProvincia() throws IOException {
 		String aux = "";
 		try {
 			FileReader l = new FileReader(pathProvincia);
@@ -182,7 +182,7 @@ public class GestionPais {
 		return aux;
 	}
 	//leer archivos paises
-	public String leer1() throws IOException {
+	public String leerPais() throws IOException {
 		String aux = "";
 		try {
 			FileReader l = new FileReader(pathPais);

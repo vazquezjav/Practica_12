@@ -130,7 +130,7 @@ public class GestionRevista {
 	}
 	// metodo para validar los espacion en blanco
 
-	public boolean validarEspacios(String nombre, String nombre2, String nombre3, String nombre4, String nombre5)
+	public boolean validarEspacio(String nombre, String nombre2, String nombre3, String nombre4, String nombre5)
 			throws Exception {
 		try {
 
@@ -156,7 +156,7 @@ public class GestionRevista {
 	}
 
 	// validar
-	public boolean validarEspacios1(String nombre, String nombre2) throws Exception {
+	public boolean validarEspacio1(String nombre, String nombre2) throws Exception {
 		try {
 
 		} catch (Exception e) {
@@ -169,7 +169,7 @@ public class GestionRevista {
 	}
 
 	// leer archivos articulo
-	public String leer() throws IOException {
+	public String leerArticulo() throws IOException {
 		String aux = "";
 		try {
 			FileReader l = new FileReader(pathArticulos);
@@ -188,7 +188,7 @@ public class GestionRevista {
 
 	}
 	//leer archivos revista
-	public String leer1() throws IOException {
+	public String leerRevista() throws IOException {
 		String aux = "";
 		try {
 			FileReader l = new FileReader(pathRevistas);

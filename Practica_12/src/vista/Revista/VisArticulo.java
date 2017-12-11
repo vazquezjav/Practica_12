@@ -183,7 +183,7 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 
 	public void guardar() {
 		try {
-			if (gr.validarEspacios(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(), tema.getText(),
+			if (gr.validarEspacio(nombreA.getText(), apellidoA.getText(), nacionalidad.getText(), tema.getText(),
 					idioma.getText())) {
 				if (gr.validarAutor(nombreA.getText(), apellidoA.getText(), nacionalidad.getText())) {
 					if (gr.validarArticulo(tema.getText(), idioma.getText())) {
@@ -209,7 +209,7 @@ public class VisArticulo extends JInternalFrame implements ActionListener {
 	}
 
 	public void leer() throws IOException {
-		listado.append(gr.leer());
+		listado.append(gr.leerArticulo());
 	}
 
 	public void listar() {
