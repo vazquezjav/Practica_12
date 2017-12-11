@@ -1,4 +1,4 @@
-package vista;
+package vista.departamento;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -25,27 +26,27 @@ import javax.swing.JTextField;
 import controlador.GestionDepartamento;
 import modelo.departamento.Departamento;
 import modelo.departamento.Empresa;
-import modelo.revista.Articulo;
 
-public class VisEmpresa extends JInternalFrame implements ActionListener {
-	private JTextField txtNombre;
-	private JTextField txtRuc;
-	private JTextField txtDireccion;
+public class VisDepartamento extends JInternalFrame implements ActionListener {
+	private JTextField txtNombreEm;
+	private JTextField txtApellidoEm;
+	private JTextField txtCedula;
+	private JTextField txtNombreDepa;
+	private JTextField txtCodigo;
 	private JTextArea txtListado;
 	private JButton guardar;
 	private JButton limpiar;
 	private JButton salir;
-	private JComboBox escojer;
 	private GestionDepartamento gd;
 
-	public VisEmpresa(GestionDepartamento gd) {
+	public VisDepartamento(GestionDepartamento gd) {
 		this.gd = gd;
 		initComponents();
 	}
 
 	private void initComponents() {
 		// TODO Auto-generated method stub
-		setSize(600, 250);
+		setSize(800, 350);
 		setClosable(true);
 		setMaximizable(true);
 		setMaximizable(true);
@@ -54,65 +55,82 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		Container cp = getContentPane();
 		JPanel dato = new JPanel();
 		dato.setLayout(gridbad);
-		txtNombre = new JTextField(10);
-		txtRuc = new JTextField(10);
-		txtDireccion = new JTextField(10);
-		txtListado = new JTextArea(10, 15);
+		txtNombreEm = new JTextField(10);
+		txtCedula = new JTextField(10);
+		txtNombreDepa = new JTextField(10);
+		txtListado = new JTextArea(20, 25);
 		dato.setLayout(gridbad);
-		JLabel tex1 = new JLabel(" Nombre de la Empresa: ");
+		JLabel tex1 = new JLabel(" Nombre del empleado ");
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex1, gbc);
 		dato.add(tex1);
-		txtNombre = new JTextField(10);
+		txtNombreEm = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtNombre, gbc);
-		dato.add(txtNombre);
-		JLabel tex2 = new JLabel(" Ruc de la empresa: ");
+		gridbad.setConstraints(txtNombreEm, gbc);
+		dato.add(txtNombreEm);
+		JLabel tex2 = new JLabel(" apellido  ");
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex2, gbc);
 		dato.add(tex2);
-		txtRuc = new JTextField(10);
+		txtApellidoEm = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtRuc, gbc);
-		dato.add(txtRuc);
-		JLabel tex3 = new JLabel(" Direccion de la empresa");
+		gridbad.setConstraints(txtApellidoEm, gbc);
+		dato.add(txtApellidoEm);
+		JLabel tex3 = new JLabel(" cedula");
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex3, gbc);
 		dato.add(tex3);
-		txtDireccion = new JTextField(10);
+		txtCedula = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 2;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtDireccion, gbc);
-		dato.add(txtDireccion);
-		JLabel tex4 = new JLabel(" Escoja departamento");
+		gridbad.setConstraints(txtCedula, gbc);
+		dato.add(txtCedula);
+		JLabel tex4 = new JLabel(" nombre del departamento");
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex4, gbc);
 		dato.add(tex4);
-		buscarDepartamento();
+		txtNombreDepa = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 3;
-		dato.add(escojer, gbc);
-		dato.setBorder(BorderFactory.createTitledBorder("DATOS DE LA Empresa"));
+		gbc.weightx = 1.0;
+		gbc.fill = 1;
+		gridbad.setConstraints(txtNombreDepa, gbc);
+		dato.add(txtNombreDepa);
+		JLabel tex5 = new JLabel(" codigo del departameto");
+		gbc.gridx = 0;
+		gbc.gridy = 4;
+		gbc.fill = 1;
+		gbc.weightx = 1.0;
+		gridbad.setConstraints(tex5, gbc);
+		dato.add(tex5);
+		txtCodigo = new JTextField(10);
+		gbc.gridx = 1;
+		gbc.gridy = 4;
+		gbc.weightx = 1.0;
+		gbc.fill = 1;
+		gridbad.setConstraints(txtCodigo, gbc);
+		dato.add(txtCodigo);
+		dato.setBorder(BorderFactory.createTitledBorder("DATOS DEL DEPARTAMETNO"));
 		cp.add(dato, BorderLayout.CENTER);
 		JPanel dato3 = new JPanel();
 		dato3.setLayout(new FlowLayout());
@@ -163,18 +181,6 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		cp.add(dato2, BorderLayout.SOUTH);
 	}
 
-	private void buscarDepartamento() {
-		// TODO Auto-generated method stub
-		Vector mo = new Vector();
-		List<Departamento> departamentos = gd.getDepartamento();
-		for (int i = 0; i < departamentos.size(); i++) {
-			Departamento depa = departamentos.get(i);
-			mo.addElement(depa);
-
-		}
-		escojer = new JComboBox(mo);
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -198,30 +204,39 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 			break;
 		}
 	}
-
 	private void guardar() {
 		// TODO Auto-generated method stub
-		String nombre = txtNombre.getText();
-		String ruc = txtRuc.getText();
-		String direccion = txtDireccion.getText();
+		String nombreEm = txtNombreEm.getText();
+		String apellidoEm = txtApellidoEm.getText();
+		String cedula = txtCedula.getText();
+		String nombreDepa = txtNombreDepa.getText();
+		String codigo = txtCodigo.getText();
+//		try {
+//			if (gd.isEsenci2(nombreEm, apellidoEm, cedula, nombreDepa, codigo)) {
+//				gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
+//				limpiar();
+//			}
+//
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+//
+//			e.printStackTrace();
+//		}
 		try {
-			if (gd.isEsenci(nombre, ruc, direccion)) {
-				gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-				limpiar();
-			}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
-
-			e.printStackTrace();
-		}
-		try {
-			if (gd.isRuc(ruc)) {
-				gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
+			if (gd.isCedulaValida(cedula)) {
+				gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
 				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
 						JOptionPane.INFORMATION_MESSAGE);
+				leer() ;
+				listar();
 				limpiar();
+			}else{
+				if (gd.isEsenci2(nombreEm, apellidoEm, cedula, nombreDepa, codigo)) {
+					gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
+					limpiar();
+					leer() ;
+				}
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -229,41 +244,32 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 
 			e.printStackTrace();
 		}
-
-		try {
-			if (gd.isChoose((Departamento) escojer.getSelectedItem())) {
-				gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
-						JOptionPane.INFORMATION_MESSAGE);
-				limpiar();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
-
-			e.printStackTrace();
-		}
-
+		
 	}
+	
 
 	private void listar() {
 		// TODO Auto-generated method stub
-		List<Empresa> empresas = gd.getEmpresa();
-		for (int i = 0; i < empresas.size(); i++) {
-			Empresa emp = empresas.get(i);
-			System.out.println("Nombre=" + emp.getNombre() + " " + emp.getRuc() + " " + emp.getDireccion() + " "+ (Departamento) escojer.getSelectedItem());
-			txtListado.append(emp.getNombre()+" "+emp.getRuc()+" "+emp.getDireccion()+" "+ (Departamento) escojer.getSelectedItem()+"\n");
+		List<Departamento> departamentos = gd.getDepartamentos();
+		for (int i = 0; i < departamentos.size(); i++) {
+			Departamento depa = departamentos.get(i);
+			System.out.println("Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados());
 		}
 	}
 
+	public void leer() throws IOException {
+		txtListado.append(gd.leerDepartamento());
+	}
 	private void limpiar() {
 		// TODO Auto-generated method stub
-		txtNombre.setText("");
-		txtRuc.setText("");
-		txtDireccion.setText("");
+		txtNombreEm.setText("");
+		txtApellidoEm.setText("");
+		txtCedula.setText("");
+		txtNombreDepa.setText("");
+		txtCodigo.setText("");
 	}
-
 	private void salir() {
+		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		int opcion = JOptionPane.showConfirmDialog(this, "Usted esta saliend del programa ", "Confirmar",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -274,4 +280,5 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "El programa se reanulara", "MSJ", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
+
 }

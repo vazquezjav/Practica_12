@@ -31,6 +31,9 @@ import vista.Revista.VisRevista;
 import vista.Revista.VisTablaArticulo;
 import vista.Revista.VisTablaAutor;
 import vista.Revista.VisTablaRevista;
+import vista.departamento.VisDepartamento;
+import vista.departamento.VisEmpresa;
+import vista.departamento.VisTablaDepartamento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -80,12 +83,16 @@ public class MiVentana extends JFrame implements ActionListener {
 		JMenu mnuVentanas6 = new JMenu("Departamento");
 		JMenuItem mnuVentanaDepa = new JMenuItem("Datos Departamento");
 		JMenuItem mnuVentanaEmpe = new JMenuItem("Empresa");
+		JMenuItem mnuVentanaListaDe = new JMenuItem("Listar Departamento");	
 		mnuVentanaDepa.addActionListener(this);
 		mnuVentanaDepa.setActionCommand("mnuVentanaDepa");
 		mnuVentanaEmpe.addActionListener(this);
 		mnuVentanaEmpe.setActionCommand("mnuVentanaEmpe");
+		mnuVentanaListaDe.addActionListener(this);
+		mnuVentanaListaDe.setActionCommand("mnuVentanaListaDe");
 		mnuVentanas6.add(mnuVentanaDepa);
 		mnuVentanas6.add(mnuVentanaEmpe);
+		mnuVentanas6.add(mnuVentanaListaDe);
 
 		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
 		mnuVentanaProvincia.addActionListener(this);
@@ -156,6 +163,9 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "mnuVentanaEmpe":
 			datoEmpresa();
 			break;
+		case "mnuVentanaListaDe":
+			ListarDepa();
+			break;
 		case "mnuVentanaProvincia":
 			datoProvincia();
 			break;
@@ -184,6 +194,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			}
 
 	}
+
 
 	public void datoRevista() {
 		VisRevista vr = new VisRevista(gr);
@@ -248,6 +259,18 @@ public class MiVentana extends JFrame implements ActionListener {
 		escritorio.add(emp);
 		try {
 			emp.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+//Listar departamento
+	private void ListarDepa() {
+		// TODO Auto-generated method stub
+		VisTablaDepartamento tbldepa = new VisTablaDepartamento (gd);
+		tbldepa .setVisible(true);
+		escritorio.add(tbldepa );
+		try {
+			tbldepa.setSelected(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

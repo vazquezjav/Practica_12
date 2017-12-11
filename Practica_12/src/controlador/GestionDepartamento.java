@@ -1,7 +1,11 @@
 package controlador;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +23,8 @@ public class GestionDepartamento {
 	private List<Empresa> empresas;
 	private List<Departamento> departamentos;
 	private List<Empleado> empleados;
-	private String pathEmpresa = "archivos/empresa/empresa.txt";
-	private String pathDepartamento = "archivos/empresa/departamento.txt";
+	private String pathEmpresa = "C:/Users/Estudiante/Desktop/Practica_12/Practica_12/src/archivos/empresa.txt";
+	private String pathDepartamento = "C:/Users/Estudiante/Desktop/Practica_12/Practica_12/src/archivos/empresa.txt";
 
 	public GestionDepartamento() {
 		empresas = new ArrayList<Empresa>();
@@ -40,10 +44,12 @@ public class GestionDepartamento {
 			depa.setNombredepa(nombreDepa);
 			depa.setCodigo(codigo);
 			depa.setEmpleados(em);
+			
+			departamentos.add(depa);
 
-			FileWriter file = new FileWriter(pathDepartamento, true);
+			FileWriter file = new FileWriter(pathDepartamento, false);
 			BufferedWriter escr = new BufferedWriter(file);
-			String registro = depa.getNombredepa() + " " + depa.getCodigo() + " " + depa.getEmpleados();
+			String registro = "Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados();
 			escr.append(registro + "\n");
 			escr.close();
 			file.close();
@@ -131,17 +137,34 @@ public class GestionDepartamento {
 		return true;
 	}
 	
-	public List<Departamento> getDepartamento() {
-		return departamentos;
-	}
 
-	public List<Empresa> getEmpresa() {
+	
+	public List<Empresa> getEmpresas() {
 		return empresas;
 	}
-
-	public List<Empleado> getEmpleado() {
+	public List<Departamento> getDepartamentos() {
+		return departamentos;
+	}
+	public List<Empleado> getEmpleados() {
 		return empleados;
 	}
-	
+	public String leerDepartamento() throws IOException {
+		String aux = "";
+		try {
+			FileReader l = new FileReader(pathDepartamento);
+			BufferedReader es = new BufferedReader(l);
+			String linea = "";
+			while (linea != null) {
+				linea = es.readLine();
+				aux = aux + "" + linea + "\n";
+
+			}
+			es.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return aux;
+
+	}
 	
 }
