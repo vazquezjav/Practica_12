@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -205,23 +206,21 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		String ruc = txtRuc.getText();
 		String direccion = txtDireccion.getText();
 		try {
-			if (gd.isEsenci(nombre, ruc, direccion)) {
-				gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-				limpiar();
-			}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
-
-			e.printStackTrace();
-		}
-		try {
-			if (gd.isRuc(ruc)) {
-				gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
-						JOptionPane.INFORMATION_MESSAGE);
-				limpiar();
+				if (gd.isEsenci(nombre, ruc, direccion)) {
+					gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
+					leer() ;
+					listar();
+					limpiar();
+				}else{
+					if (gd.isChoose((Departamento) escojer.getSelectedItem())) {
+						gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
+						JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
+								JOptionPane.INFORMATION_MESSAGE);
+						leer() ;
+						listar();
+						limpiar();
+					}
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -231,12 +230,7 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		}
 
 		try {
-			if (gd.isChoose((Departamento) escojer.getSelectedItem())) {
-				gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
-						JOptionPane.INFORMATION_MESSAGE);
-				limpiar();
-			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
@@ -256,6 +250,9 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		}
 	}
 
+	public void leer() throws IOException {
+		txtListado.append(gd.leerDepartamento());
+	}
 	private void limpiar() {
 		// TODO Auto-generated method stub
 		txtNombre.setText("");

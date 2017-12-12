@@ -23,8 +23,8 @@ public class GestionDepartamento {
 	private List<Empresa> empresas;
 	private List<Departamento> departamentos;
 	private List<Empleado> empleados;
-	private String pathEmpresa = "C:/Users/Estudiante/Desktop/Practica_12/Practica_12/src/archivos/empresa.txt";
-	private String pathDepartamento = "C:/Users/Estudiante/Desktop/Practica_12/Practica_12/src/archivos/empresa.txt";
+	private String pathEmpresa = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/empresa.txt";
+	private String pathDepartamento = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Departamento.txt";
 
 	public GestionDepartamento() {
 		empresas = new ArrayList<Empresa>();
@@ -44,7 +44,6 @@ public class GestionDepartamento {
 			depa.setNombredepa(nombreDepa);
 			depa.setCodigo(codigo);
 			depa.setEmpleados(em);
-			
 			departamentos.add(depa);
 
 			FileWriter file = new FileWriter(pathDepartamento, false);
@@ -66,7 +65,8 @@ public class GestionDepartamento {
 			emp.setRuc(ruc);
 			emp.setDireccion(direccion);
 			emp.setDepartamentos(departamento);
-			FileWriter file = new FileWriter(pathDepartamento, true);
+			empresas.add(emp);
+			FileWriter file = new FileWriter(pathEmpresa, false);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = emp.getNombre() + " " + emp.getRuc() + " " + emp.getDireccion() + " "
 					+ emp.getDepartamentos();
@@ -152,6 +152,24 @@ public class GestionDepartamento {
 		String aux = "";
 		try {
 			FileReader l = new FileReader(pathDepartamento);
+			BufferedReader es = new BufferedReader(l);
+			String linea = "";
+			while (linea != null) {
+				linea = es.readLine();
+				aux = aux + "" + linea + "\n";
+
+			}
+			es.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return aux;
+
+	}
+	public String leerEmpresa() throws IOException {
+		String aux = "";
+		try {
+			FileReader l = new FileReader(pathEmpresa);
 			BufferedReader es = new BufferedReader(l);
 			String linea = "";
 			while (linea != null) {

@@ -13,8 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import controlador.GestionDepartamento;
-import controlador.GestionRevista;
-import vista.Revista.ModeloArticulo;
 
 public class VisTablaDepartamento extends JInternalFrame implements ActionListener {
 	private JTable tblDepartamentos;
