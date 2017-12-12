@@ -31,6 +31,10 @@ import vista.Revista.VisRevista;
 import vista.Revista.VisTablaArticulo;
 import vista.Revista.VisTablaAutor;
 import vista.Revista.VisTablaRevista;
+import vista.departamento.VisDepartamento;
+import vista.departamento.VisEmpresa;
+import vista.departamento.VisTablaDepartamento;
+import vista.departamento.VisTablaEmpresa;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -80,12 +84,20 @@ public class MiVentana extends JFrame implements ActionListener {
 		JMenu mnuVentanas6 = new JMenu("Departamento");
 		JMenuItem mnuVentanaDepa = new JMenuItem("Datos Departamento");
 		JMenuItem mnuVentanaEmpe = new JMenuItem("Empresa");
+		JMenuItem mnuVentanaListaDe = new JMenuItem("Listar Departamento");	
+		JMenuItem mnuVentanaListaEm = new JMenuItem("Listar Empresa");	
 		mnuVentanaDepa.addActionListener(this);
 		mnuVentanaDepa.setActionCommand("mnuVentanaDepa");
 		mnuVentanaEmpe.addActionListener(this);
 		mnuVentanaEmpe.setActionCommand("mnuVentanaEmpe");
+		mnuVentanaListaDe.addActionListener(this);
+		mnuVentanaListaDe.setActionCommand("mnuVentanaListaDe");
+		mnuVentanaListaEm.addActionListener(this);
+		mnuVentanaListaEm.setActionCommand("mnuVentanaListaEm");
 		mnuVentanas6.add(mnuVentanaDepa);
 		mnuVentanas6.add(mnuVentanaEmpe);
+		mnuVentanas6.add(mnuVentanaListaDe);
+		mnuVentanas6.add(mnuVentanaListaEm);
 
 		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
 		mnuVentanaProvincia.addActionListener(this);
@@ -156,6 +168,12 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "mnuVentanaEmpe":
 			datoEmpresa();
 			break;
+		case "mnuVentanaListaDe":
+			ListarDepa();
+			break;
+		case "mnuVentanaListaEm":
+			ListarEm();
+			break;
 		case "mnuVentanaProvincia":
 			datoProvincia();
 			break;
@@ -184,6 +202,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			}
 
 	}
+
 
 	public void datoRevista() {
 		VisRevista vr = new VisRevista(gr);
@@ -252,6 +271,30 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
+//Listar departamento
+	private void ListarDepa() {
+		// TODO Auto-generated method stub
+		VisTablaDepartamento tbldepa = new VisTablaDepartamento (gd);
+		tbldepa .setVisible(true);
+		escritorio.add(tbldepa );
+		try {
+			tbldepa.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	private void ListarEm() {
+		// TODO Auto-generated method stub
+		VisTablaEmpresa tblem = new VisTablaEmpresa(gd);
+		tblem .setVisible(true);
+		escritorio.add(tblem);
+		try {
+			tblem.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
 	///LISTAS

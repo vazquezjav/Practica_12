@@ -8,20 +8,22 @@ import javax.swing.table.AbstractTableModel;
 import modelo.revista.Articulo;
 import modelo.revista.Autor;
 
-public class ModeloArticulo extends AbstractTableModel{
+public class ModeloArticulo extends AbstractTableModel {
 
-	public String []columnas ={"Autor","Tema","Idioma"};
-	public Class[] columnasTipos={ String.class, String.class, String.class};
-	private List<Articulo>datos;
-	
-	public ModeloArticulo(){
+	public String[] columnas = { "Autor", "Tema", "Idioma" };
+	public Class[] columnasTipos = { String.class, String.class, String.class };
+	private List<Articulo> datos;
+
+	public ModeloArticulo() {
 		super();
-		datos= new ArrayList<Articulo>();
+		datos = new ArrayList<Articulo>();
 	}
-	public ModeloArticulo(List<Articulo>datos){
+
+	public ModeloArticulo(List<Articulo> datos) {
 		super();
-		this.datos=datos;
+		this.datos = datos;
 	}
+
 	public int getColumnCount() {
 		return columnas.length;
 	}
@@ -30,9 +32,9 @@ public class ModeloArticulo extends AbstractTableModel{
 		return datos.size();
 	}
 
-	public void setValueAt(Object value, int row, int col){
-		Articulo dato=(Articulo)(datos.get(row));
-		switch(col){
+	public void setValueAt(Object value, int row, int col) {
+		Articulo dato = (Articulo) (datos.get(row));
+		switch (col) {
 		case 0:
 			dato.setAutor((Autor) value);
 			break;
@@ -42,34 +44,34 @@ public class ModeloArticulo extends AbstractTableModel{
 		case 2:
 			dato.setIdioma((String) value);
 			break;
-			default:
+		default:
 			break;
 		}
 	}
 
-	public String getColumnName(int col){
+	public String getColumnName(int col) {
 		return columnas[col];
 	}
-	public Class getColumnClass(int col){
+
+	public Class getColumnClass(int col) {
 		return columnasTipos[col];
 	}
-	
+
 	@Override
 	public Object getValueAt(int row, int col) {
-		Articulo dato=(Articulo)(datos.get(row));
-		switch(col){
+		Articulo dato = (Articulo) (datos.get(row));
+		switch (col) {
 		case 0:
 			return dato.getAutor();
 		case 1:
 			return dato.getTema();
 		case 2:
 			return dato.getIdioma();
-			default:
-				break;
+		default:
+			break;
 		}
-		
+
 		return new String();
 	}
-
 
 }

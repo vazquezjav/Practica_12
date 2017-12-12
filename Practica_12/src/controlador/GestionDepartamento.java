@@ -1,7 +1,11 @@
 package controlador;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +23,8 @@ public class GestionDepartamento {
 	private List<Empresa> empresas;
 	private List<Departamento> departamentos;
 	private List<Empleado> empleados;
-	private String pathEmpresa = "archivos/empresa/empresa.txt";
-	private String pathDepartamento = "archivos/empresa/departamento.txt";
+	private String pathEmpresa = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/empresa.txt";
+	private String pathDepartamento = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Departamento.txt";
 
 	public GestionDepartamento() {
 		empresas = new ArrayList<Empresa>();
@@ -40,16 +44,16 @@ public class GestionDepartamento {
 			depa.setNombredepa(nombreDepa);
 			depa.setCodigo(codigo);
 			depa.setEmpleados(em);
+			departamentos.add(depa);
 
-			FileWriter file = new FileWriter(pathDepartamento, true);
+			FileWriter file = new FileWriter(pathDepartamento, false);
 			BufferedWriter escr = new BufferedWriter(file);
-			String registro = depa.getNombredepa() + " " + depa.getCodigo() + " " + depa.getEmpleados();
+			String registro = "Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados();
 			escr.append(registro + "\n");
 			escr.close();
 			file.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 //metodo para agragar empresa
@@ -60,7 +64,8 @@ public class GestionDepartamento {
 			emp.setRuc(ruc);
 			emp.setDireccion(direccion);
 			emp.setDepartamentos(departamento);
-			FileWriter file = new FileWriter(pathDepartamento, true);
+			empresas.add(emp);
+			FileWriter file = new FileWriter(pathEmpresa, false);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = emp.getNombre() + " " + emp.getRuc() + " " + emp.getDireccion() + " "
 					+ emp.getDepartamentos();
@@ -69,7 +74,6 @@ public class GestionDepartamento {
 			file.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -82,18 +86,6 @@ public class GestionDepartamento {
 		}
 		if(departamento==null )
 			throw new Exception("NO A LLENADO EL DEPARTAMENTO");
-		return true;
-	}
-	//metodo de validaccion de ruc
-	public boolean isRuc(String ruc) throws Exception{
-		try {
-			int a = Integer.parseInt(ruc);
-		}catch(NumberFormatException e){
-			throw new Exception("Formato incorrecto, contiene caracteres");
-		}
-		if(ruc.length()!=12)
-			throw new Exception("debe ser de 12 dígitoscon los dos 00 al comienzo");
-		
 		return true;
 	}
 	//metodo de validacion de espacios en blanco
@@ -131,17 +123,52 @@ public class GestionDepartamento {
 		return true;
 	}
 	
-	public List<Departamento> getDepartamento() {
-		return departamentos;
-	}
 
-	public List<Empresa> getEmpresa() {
+	
+	public List<Empresa> getEmpresas() {
 		return empresas;
 	}
-
-	public List<Empleado> getEmpleado() {
+	public List<Departamento> getDepartamentos() {
+		return departamentos;
+	}
+	public List<Empleado> getEmpleados() {
 		return empleados;
 	}
-	
+	public String leerDepartamento() throws IOException {
+		String aux = "";
+		try {
+			FileReader l = new FileReader(pathDepartamento);
+			BufferedReader es = new BufferedReader(l);
+			String linea = "";
+			while (linea != null) {
+				linea = es.readLine();
+				aux = aux + "" + linea + "\n";
+
+			}
+			es.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return aux;
+
+	}
+	public String leerEmpresa() throws IOException {
+		String aux = "";
+		try {
+			FileReader l = new FileReader(pathEmpresa);
+			BufferedReader es = new BufferedReader(l);
+			String linea = "";
+			while (linea != null) {
+				linea = es.readLine();
+				aux = aux + "" + linea + "\n";
+
+			}
+			es.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return aux;
+
+	}
 	
 }
