@@ -1,4 +1,4 @@
-package vista.departamento;
+package vista.resultado;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -24,26 +24,25 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controlador.GestionDepartamento;
+import controlador.GestionResultado;
 import modelo.departamento.Departamento;
-import modelo.departamento.Empresa;
+import modelo.resultado.Atleta;
 
-public class VisDepartamento extends JInternalFrame implements ActionListener {
-	private JTextField txtNombreEm;
-	private JTextField txtApellidoEm;
+public class VisAtleta extends JInternalFrame implements ActionListener{
+	private JTextField txtNombreA;
+	private JTextField txtNumero;
 	private JTextField txtCedula;
-	private JTextField txtNombreDepa;
-	private JTextField txtCodigo;
+	private JTextField txtPosicion;
+	private JTextField txtTiempo;
 	private JTextArea txtListado;
 	private JButton guardar;
 	private JButton limpiar;
 	private JButton salir;
-	private GestionDepartamento gd;
-
-	public VisDepartamento(GestionDepartamento gd) {
-		this.gd = gd;
+	private GestionResultado gres;
+	public VisAtleta(GestionResultado gres) {
+		this.gres = gres;
 		initComponents();
 	}
-
 	private void initComponents() {
 		// TODO Auto-generated method stub
 		setSize(800, 350);
@@ -55,39 +54,39 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		Container cp = getContentPane();
 		JPanel dato = new JPanel();
 		dato.setLayout(gridbad);
-		txtNombreEm = new JTextField(10);
+		txtNombreA = new JTextField(10);
 		txtCedula = new JTextField(10);
-		txtNombreDepa = new JTextField(10);
+		txtPosicion = new JTextField(10);
 		txtListado = new JTextArea(20, 25);
 		dato.setLayout(gridbad);
-		JLabel tex1 = new JLabel(" Nombre del empleado ");
+		JLabel tex1 = new JLabel(" Nombre del Atleta ");
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex1, gbc);
 		dato.add(tex1);
-		txtNombreEm = new JTextField(10);
+		txtNombreA = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtNombreEm, gbc);
-		dato.add(txtNombreEm);
-		JLabel tex2 = new JLabel(" apellido  ");
+		gridbad.setConstraints(txtNombreA, gbc);
+		dato.add(txtNombreA);
+		JLabel tex2 = new JLabel(" Numero ");
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex2, gbc);
 		dato.add(tex2);
-		txtApellidoEm = new JTextField(10);
+		txtNumero = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtApellidoEm, gbc);
-		dato.add(txtApellidoEm);
+		gridbad.setConstraints(txtNumero, gbc);
+		dato.add(txtNumero);
 		JLabel tex3 = new JLabel(" cedula");
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -102,35 +101,35 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		gbc.fill = 1;
 		gridbad.setConstraints(txtCedula, gbc);
 		dato.add(txtCedula);
-		JLabel tex4 = new JLabel(" nombre del departamento");
+		JLabel tex4 = new JLabel("Posicion");
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex4, gbc);
 		dato.add(tex4);
-		txtNombreDepa = new JTextField(10);
+		txtPosicion = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 3;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtNombreDepa, gbc);
-		dato.add(txtNombreDepa);
-		JLabel tex5 = new JLabel(" codigo del departameto");
+		gridbad.setConstraints(txtPosicion, gbc);
+		dato.add(txtPosicion);
+		JLabel tex5 = new JLabel(" tiempo ");
 		gbc.gridx = 0;
 		gbc.gridy = 4;
 		gbc.fill = 1;
 		gbc.weightx = 1.0;
 		gridbad.setConstraints(tex5, gbc);
 		dato.add(tex5);
-		txtCodigo = new JTextField(10);
+		txtTiempo = new JTextField(10);
 		gbc.gridx = 1;
 		gbc.gridy = 4;
 		gbc.weightx = 1.0;
 		gbc.fill = 1;
-		gridbad.setConstraints(txtCodigo, gbc);
-		dato.add(txtCodigo);
-		dato.setBorder(BorderFactory.createTitledBorder("DATOS DEL DEPARTAMETNO"));
+		gridbad.setConstraints(txtTiempo, gbc);
+		dato.add(txtTiempo);
+		dato.setBorder(BorderFactory.createTitledBorder("DATOS DEL ATLETA"));
 		cp.add(dato, BorderLayout.CENTER);
 		JPanel dato3 = new JPanel();
 		dato3.setLayout(new FlowLayout());
@@ -180,13 +179,11 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		dato.setBorder(BorderFactory.createTitledBorder(""));
 		cp.add(dato2, BorderLayout.SOUTH);
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String comando = e.getActionCommand();
-
-		System.out.println("evento boton" + comando);
+		System.out.println( comando);
 		switch (comando) {
 		case "btnSalir":
 			salir();
@@ -205,53 +202,30 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		}
 	}
 	private void guardar() {
-		// TODO Auto-generated method stub
-		String nombreEm = txtNombreEm.getText();
-		String apellidoEm = txtApellidoEm.getText();
+		String nombreA = txtNombreA.getText();
+		String numero = txtNumero.getText();
 		String cedula = txtCedula.getText();
-		String nombreDepa = txtNombreDepa.getText();
-		String codigo = txtCodigo.getText();
-		try {
-			if (gd.isCedulaValida(cedula)) {
-				gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
-				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
-						JOptionPane.INFORMATION_MESSAGE);
-				leer() ;
-				listar();
-				limpiar();
-			}else{
-				if (gd.isEsenci2(nombreEm, apellidoEm, cedula, nombreDepa, codigo)) {
-					gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
-					limpiar();
-					leer() ;
-				}
-			}
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
-
-			e.printStackTrace();
-		}
+		String posicion = txtPosicion.getText();
+		String Timpo = txtTiempo.getText();
+		
 		
 	}
-	
-
-	private void listar() {
-		List<Departamento> departamentos = gd.getDepartamentos();
-		for (int i = 0; i < departamentos.size(); i++) {
-			Departamento depa = departamentos.get(i);
-			System.out.println("Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados());
-		}
-	}
-
-	public void leer() throws IOException {
-		txtListado.append(gd.leerDepartamento());
-	}
 	private void limpiar() {
-		txtNombreEm.setText("");
-		txtApellidoEm.setText("");
+		txtNombreA.setText("");
+		txtNumero.setText("");
 		txtCedula.setText("");
-		txtNombreDepa.setText("");
-		txtCodigo.setText("");
+		txtTiempo.setText("");
+		txtPosicion.setText("");
+	}
+	public void leer() throws IOException{
+		txtListado.append(gres.leerAtleta());
+	}
+	private void listar() {
+		List<Atleta> atletas = gres.getAtletas();
+		for (int i = 0; i < atletas.size(); i++) {
+			Atleta at = atletas.get(i);
+			System.out.println("Nombre:"+at.getNombre()+" numero:"+at.getNumero()+",cedula"+at.getCedula()+",resultado:"+at.getResultado());
+		}
 	}
 	private void salir() {
 		int opcion = JOptionPane.showConfirmDialog(this, "Usted esta saliend del programa ", "Confirmar",

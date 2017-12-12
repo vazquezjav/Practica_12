@@ -54,7 +54,6 @@ public class GestionDepartamento {
 			file.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 //metodo para agragar empresa
@@ -75,7 +74,6 @@ public class GestionDepartamento {
 			file.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -88,18 +86,6 @@ public class GestionDepartamento {
 		}
 		if(departamento==null )
 			throw new Exception("NO A LLENADO EL DEPARTAMENTO");
-		return true;
-	}
-	//metodo de validaccion de ruc
-	public boolean isRuc(String ruc) throws Exception{
-		try {
-			int a = Integer.parseInt(ruc);
-		}catch(NumberFormatException e){
-			throw new Exception("Formato incorrecto, contiene caracteres");
-		}
-		if(ruc.length()!=12)
-			throw new Exception("debe ser de 12 dígitoscon los dos 00 al comienzo");
-		
 		return true;
 	}
 	//metodo de validacion de espacios en blanco
