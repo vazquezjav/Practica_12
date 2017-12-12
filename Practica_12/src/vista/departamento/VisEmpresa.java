@@ -207,38 +207,21 @@ public class VisEmpresa extends JInternalFrame implements ActionListener {
 		String direccion = txtDireccion.getText();
 		try {
 				if (gd.isEsenci(nombre, ruc, direccion)) {
-					gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-					leer() ;
-					listar();
-					limpiar();
-				}else{
-					if (gd.isChoose((Departamento) escojer.getSelectedItem())) {
+					if(gd.isChoose((Departamento) escojer.getSelectedItem())){
 						gd.agregarEmpresa(nombre, ruc, direccion, (Departamento) escojer.getSelectedItem());
-						JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
-								JOptionPane.INFORMATION_MESSAGE);
 						leer() ;
 						listar();
 						limpiar();
 					}
+				}
 				
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
 
 			e.printStackTrace();
 		}
-
-		try {
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
-
-			e.printStackTrace();
 		}
-
-	}
 
 	private void listar() {
 		// TODO Auto-generated method stub
