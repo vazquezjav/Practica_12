@@ -8,13 +8,14 @@ import java.util.ResourceBundle;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import controlador.Gestion;
 
-public class Ventana extends JFrame implements ActionListener
+public class Ventana extends JInternalFrame implements ActionListener
 {	
 	private JDesktopPane escritorio;
 	private controlador.Gestion gd;

@@ -18,7 +18,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import controlador.Gestion;
 import controlador.GestionDepartamento;
+import controlador.GestionPaciente;
 import controlador.GestionPais;
 import controlador.GestionResultado;
 import controlador.GestionRevista;
@@ -53,6 +55,8 @@ public class MiVentana extends JFrame implements ActionListener {
 	private GestionPais gp;
 	private GestionDepartamento gd;
 	private GestionResultado gres;
+	private Gestion g;
+	private GestionPaciente gpa;
 
 	public MiVentana() {
 		initComplement();
@@ -60,6 +64,9 @@ public class MiVentana extends JFrame implements ActionListener {
 		gp = new GestionPais();
 		gd = new GestionDepartamento();
 		gres = new GestionResultado();
+		g= new Gestion();
+		gpa= new GestionPaciente();
+		
 	}
 
 	private void initComplement() {
@@ -76,6 +83,18 @@ public class MiVentana extends JFrame implements ActionListener {
 
 		JMenuBar barra = new JMenuBar();
 
+		JMenu jugador = new JMenu("Jugador");
+		JMenuItem juga = new JMenuItem("Ventana Jugador");
+		juga.addActionListener(this);
+		juga.setActionCommand("Jugador");
+		
+		jugador.add(juga);
+		JMenu consulta = new JMenu("Consulta");
+		JMenuItem con = new JMenuItem("Ventana Paciente");
+		con.addActionListener(this);
+		con.setActionCommand("Paciente");
+		consulta.add(con);
+		
 		//Menu revistas
 		JMenu revistas = new JMenu("Revistas");
 		JMenuItem mnuVentana1 = new JMenuItem("Datos Articulo");
@@ -174,6 +193,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		barra.add(paises);
 		barra.add(mnuVentanas6);
 		barra.add(mnuVentanas7);
+		barra.add(jugador);
+		barra.add(consulta);
 		setJMenuBar(barra);
 	}
 
@@ -238,10 +259,44 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "lisPaises":
 			listaPais();
 			break;
+		case "Paciente":
+			Paciente();
+			break;
+		case "Jugador":
+			Jugador();
+			break;
 
 		}
 
 	}
+	
+	public void Jugador() {
+		VistaEquipo.Ventana vr = new VistaEquipo.Ventana();
+		vr.setVisible(true);
+		escritorio.add(vr);
+		try {
+			vr.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void Paciente() {
+		vista.Paciente.VentanaPrincipal vr = new vista.Paciente.VentanaPrincipal();
+		vr.setVisible(true);
+		escritorio.add(vr);
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	
+	
 //datos de la revista
 	public void datoRevista() {
 		VisRevista vr = new VisRevista(gr);
