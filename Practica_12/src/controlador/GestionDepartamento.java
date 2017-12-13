@@ -23,8 +23,8 @@ public class GestionDepartamento {
 	private List<Empresa> empresas;
 	private List<Departamento> departamentos;
 	private List<Empleado> empleados;
-	private String pathEmpresa = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/empresa.txt";
-	private String pathDepartamento = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Departamento.txt";
+	private String pathEmpresa = "src/archivos/empresa.txt";
+	private String pathDepartamento = "src/archivos/Departamento.txt";
 
 	public GestionDepartamento() {
 		empresas = new ArrayList<Empresa>();

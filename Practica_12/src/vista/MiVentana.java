@@ -76,16 +76,61 @@ public class MiVentana extends JFrame implements ActionListener {
 
 		JMenuBar barra = new JMenuBar();
 
-		JMenu mnuVentanas = new JMenu("Archivo");
+		//Menu revistas
+		JMenu revistas = new JMenu("Revistas");
 		JMenuItem mnuVentana1 = new JMenuItem("Datos Articulo");
 		mnuVentana1.addActionListener(this);
 		mnuVentana1.setActionCommand("mnuVentana1");
-		mnuVentanas.add(mnuVentana1);
+		revistas.add(mnuVentana1);
 
 		JMenuItem mnuVentana2 = new JMenuItem("Datos Revista");
 		mnuVentana2.addActionListener(this);
 		mnuVentana2.setActionCommand("mnuVentana2");
-		mnuVentanas.add(mnuVentana2);
+		revistas.add(mnuVentana2);
+		
+
+		JMenuItem lisAutores = new JMenuItem("Lista Autores");
+		lisAutores.addActionListener(this);
+		lisAutores.setActionCommand("lisAutores");
+		revistas.add(lisAutores);
+
+		JMenuItem lisArticulos = new JMenuItem("Lista Articulos");
+		lisArticulos.addActionListener(this);
+		lisArticulos.setActionCommand("lisArticulos");
+		revistas.add(lisArticulos);
+
+		JMenuItem lisRevistas = new JMenuItem("Lista Revistas");
+		lisRevistas.addActionListener(this);
+		lisRevistas.setActionCommand("lisRevistas");
+		revistas.add(lisRevistas);
+		
+		//Menu Paises
+		JMenu paises = new JMenu("Pais");
+		JMenuItem provincia = new JMenuItem("Datos Provincia");
+		provincia.addActionListener(this);
+		provincia.setActionCommand("mnuVentanaProvincia");
+		paises.add(provincia);
+
+		JMenuItem pais = new JMenuItem("Datos Pais");
+		pais.addActionListener(this);
+		pais.setActionCommand("mnuVentanaPais");
+		paises.add(pais);
+		
+		JMenuItem lisCantones = new JMenuItem("Lista Cantones");
+		lisCantones.addActionListener(this);
+		lisCantones.setActionCommand("lisCantones");
+		paises.add(lisCantones);
+
+		JMenuItem lisProvincias = new JMenuItem("Lista Provincias");
+		lisProvincias.addActionListener(this);
+		lisProvincias.setActionCommand("lisProvincias");
+		paises.add(lisProvincias);
+
+		JMenuItem lisPaises = new JMenuItem("Lista Paises");
+		lisPaises.addActionListener(this);
+		lisPaises.setActionCommand("lisPaises");
+		paises.add(lisPaises);
+		
 
 		JMenu mnuVentanas6 = new JMenu("Departamento");
 		JMenuItem mnuVentanaDepa = new JMenuItem("Datos Departamento");
@@ -110,6 +155,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		JMenuItem mnuVentanaCom = new JMenuItem("Competencia");
 		JMenuItem mnuVentanaListaAt = new JMenuItem("Listar Atleta");
 		JMenuItem mnuVentanaListaCom = new JMenuItem("Listar Competencia");
+		
 		mnuVentanaAt.addActionListener(this);
 		mnuVentanaAt.setActionCommand("mnuVentanaAt");
 		mnuVentanaCom.addActionListener(this);
@@ -123,49 +169,9 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnuVentanas7.add(mnuVentanaListaAt);
 		mnuVentanas7.add(mnuVentanaListaCom);
 
-		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
-		mnuVentanaProvincia.addActionListener(this);
-		mnuVentanaProvincia.setActionCommand("mnuVentanaProvincia");
-		mnuVentanas.add(mnuVentanaProvincia);
-
-		JMenuItem mnuVentanaPais = new JMenuItem("Datos Pais");
-		mnuVentanaPais.addActionListener(this);
-		mnuVentanaPais.setActionCommand("mnuVentanaPais");
-		mnuVentanas.add(mnuVentanaPais);
-
-		JMenu Listas = new JMenu("Listas");
-
-		JMenuItem lisAutores = new JMenuItem("Lista Autores");
-		lisAutores.addActionListener(this);
-		lisAutores.setActionCommand("lisAutores");
-		Listas.add(lisAutores);
-
-		JMenuItem lisArticulos = new JMenuItem("Lista Articulos");
-		lisArticulos.addActionListener(this);
-		lisArticulos.setActionCommand("lisArticulos");
-		Listas.add(lisArticulos);
-
-		JMenuItem lisRevistas = new JMenuItem("Lista Revistas");
-		lisRevistas.addActionListener(this);
-		lisRevistas.setActionCommand("lisRevistas");
-		Listas.add(lisRevistas);
-
-		JMenuItem lisCantones = new JMenuItem("Lista Cantones");
-		lisCantones.addActionListener(this);
-		lisCantones.setActionCommand("lisCantones");
-		Listas.add(lisCantones);
-
-		JMenuItem lisProvincias = new JMenuItem("Lista Provincias");
-		lisProvincias.addActionListener(this);
-		lisProvincias.setActionCommand("lisProvincias");
-		Listas.add(lisProvincias);
-
-		JMenuItem lisPaises = new JMenuItem("Lista Paises");
-		lisPaises.addActionListener(this);
-		lisPaises.setActionCommand("lisPaises");
-		Listas.add(lisPaises);
-		barra.add(mnuVentanas);
-		barra.add(Listas);
+		
+		barra.add(revistas);
+		barra.add(paises);
 		barra.add(mnuVentanas6);
 		barra.add(mnuVentanas7);
 		setJMenuBar(barra);
@@ -236,7 +242,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//datos de la revista
 	public void datoRevista() {
 		VisRevista vr = new VisRevista(gr);
 		vr.setVisible(true);
@@ -248,7 +254,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//datos del articulo
 	public void datoArticulo() {
 		VisArticulo va = new VisArticulo(gr);
 		va.setVisible(true);
@@ -259,7 +265,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//datos de laprovvincia
 	public void datoProvincia() {
 		VisProvincia pr = new VisProvincia(gp);
 		pr.setVisible(true);
@@ -271,7 +277,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//datos del pais
 	public void datoPais() {
 		VisPais ps = new VisPais(gp);
 		ps.setVisible(true);
@@ -282,7 +288,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//datos del departamento
 	private void datoDepartamento() {
 		VisDepartamento depa = new VisDepartamento(gd);
 		depa.setVisible(true);
@@ -316,7 +322,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//lista de las empresas
 	private void ListarEm() {
 		VisTablaEmpresa tblem = new VisTablaEmpresa(gd);
 		tblem.setVisible(true);
@@ -327,7 +333,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//datos  del atleta
 	private void datoAtleta() {
 		VisAtleta atle = new VisAtleta(gres);
 		atle.setVisible(true);
@@ -338,7 +344,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//ventana de los datos de la competencia
 	private void datoCompetencia() {
 		VisCompetancia com = new VisCompetancia(gres);
 		com.setVisible(true);
@@ -350,7 +356,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//ventana delas lista de la competencia
 	private void ListarCompetencai() {
 		VisTablaCompetencia com = new VisTablaCompetencia(gres);
 		com.setVisible(true);
@@ -361,7 +367,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//ventana de la lista del atleta 
 	private void ListarAtleta() {
 		VisTablaAtleta atle = new VisTablaAtleta(gres);
 		atle.setVisible(true);
@@ -373,7 +379,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-	/// LISTAS
+//ventana de las listas de los autores
 
 	public void listaAutor() {
 		VisTablaAutor ta = new VisTablaAutor(gr);
@@ -385,7 +391,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//ventana de las listas de los articulos
 	public void listaArticulo() {
 		VisTablaArticulo tar = new VisTablaArticulo(gr);
 		tar.setVisible(true);
@@ -397,7 +403,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//ventan de las listas de las revistas
 	public void listaRevista() {
 		VisTablaRevista tr = new VisTablaRevista(gr);
 		tr.setVisible(true);
@@ -408,7 +414,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+//ventana de las listas de los cantones
 	public void listaCanton() {
 		VisTablaCanton tc = new VisTablaCanton(gp);
 		tc.setVisible(true);
@@ -420,7 +426,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//ventana de las  listas de las provincias
 	public void listaProvincia() {
 		VisTablaProvincia tp = new VisTablaProvincia(gp);
 		tp.setVisible(true);
@@ -432,7 +438,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		}
 
 	}
-
+//ventana de las listas de los paises
 	public void listaPais() {
 		VisTablaPais tpa = new VisTablaPais(gp);
 		tpa.setVisible(true);

@@ -27,34 +27,6 @@ public class GestionPais {
 		provincias = new ArrayList<Provincia>();
 		cantones = new ArrayList<Canton>();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//NO JAVIER NO
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public void agregarProvincia(String nombreP, String codigo, String region, String nombreC, String poblacion,
 			String alcalde) {

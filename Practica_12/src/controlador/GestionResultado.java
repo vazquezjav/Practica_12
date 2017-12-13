@@ -20,8 +20,8 @@ public class GestionResultado {
 	private List<Atleta> atletas;
 	private List<Resultado> resultados;
 	private List<Competencia> competencias;
-	private String pathCompetencia = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Competencia.txt";
-	private String pathAtleta = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Atleta.txt";
+	private String pathCompetencia = "src/archivos/Competencia.txt";
+	private String pathAtleta = "src/archivos/Atleta.txt";
 
 	public GestionResultado() {
 		atletas = new ArrayList<Atleta>();
