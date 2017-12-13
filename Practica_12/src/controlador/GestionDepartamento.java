@@ -46,7 +46,7 @@ public class GestionDepartamento {
 			depa.setEmpleados(em);
 			departamentos.add(depa);
 
-			FileWriter file = new FileWriter(pathDepartamento, false);
+			FileWriter file = new FileWriter(pathDepartamento,true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = "Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados();
 			escr.append(registro + "\n");
@@ -65,7 +65,7 @@ public class GestionDepartamento {
 			emp.setDireccion(direccion);
 			emp.setDepartamentos(departamento);
 			empresas.add(emp);
-			FileWriter file = new FileWriter(pathEmpresa, false);
+			FileWriter file = new FileWriter(pathEmpresa, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = emp.getNombre() + " " + emp.getRuc() + " " + emp.getDireccion() + " "
 					+ emp.getDepartamentos();
