@@ -19,11 +19,11 @@ public class GestionRevista {
 	private List<Articulo> articulos;
 	private List<Autor> autores;
 
-	private String pathRevistas = "C:\\Users\\TOSHIBA\\git\\Practica_12\\Practica_12\\src\\archivos\\Revistas.txt";
-	private String pathArticulos = "C:\\Users\\TOSHIBA\\git\\Practica_12\\Practica_12\\src\\archivos\\Articulos.txt";
-
+	protected String pathRevistas = "src/archivos/Revistas.txt";
+	private String pathArticulos = "src/archivos/Articulos.txt";
 	public GestionRevista() {
 		revistas = new ArrayList<Revista>();
+		
 		articulos = new ArrayList<Articulo>();
 		autores = new ArrayList<Autor>();
 

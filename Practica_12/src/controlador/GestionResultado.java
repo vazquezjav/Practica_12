@@ -20,8 +20,9 @@ public class GestionResultado {
 	private List<Atleta> atletas;
 	private List<Resultado> resultados;
 	private List<Competencia> competencias;
-	private String pathCompetencia = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Competencia.txt";
-	private String pathAtleta = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Atleta.txt";
+	
+	private String pathCompetencia = "src/archivos/Competencia.txt";
+	private String pathAtleta = "src/archivos/Atleta.txt";
 
 	public GestionResultado() {
 		atletas = new ArrayList<Atleta>();
@@ -43,7 +44,7 @@ public class GestionResultado {
 			at.setResultados(res);
 			atletas.add(at);
 			
-			FileWriter file = new FileWriter(pathAtleta, false);
+			FileWriter file = new FileWriter(pathAtleta, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = "Nombre del Atleta:" + at.getNombre() + " cedula :" + at.getCedula() + "numero: "+ at.getNumero() + " posicion:" + res.getPosicion();
 			escr.append(registro + "\n");
@@ -61,7 +62,7 @@ public class GestionResultado {
 			com.setModalidad(modalidad);
 			com.setAtletas(atleta);
 			competencias.add(com);
-			FileWriter file = new FileWriter(pathCompetencia, false);
+			FileWriter file = new FileWriter(pathCompetencia, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = "Tipo de competencia" + com.getTipo() + ",Modalidad:" + com.getModalidad() + "Atleta "
 					+ com.getAtletas();

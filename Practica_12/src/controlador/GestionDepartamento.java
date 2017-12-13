@@ -23,8 +23,8 @@ public class GestionDepartamento {
 	private List<Empresa> empresas;
 	private List<Departamento> departamentos;
 	private List<Empleado> empleados;
-	private String pathEmpresa = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/empresa.txt";
-	private String pathDepartamento = "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Departamento.txt";
+	private String pathEmpresa = "src/archivos/empresa.txt";
+	private String pathDepartamento = "src/archivos/Departamento.txt";
 
 	public GestionDepartamento() {
 		empresas = new ArrayList<Empresa>();
@@ -46,7 +46,7 @@ public class GestionDepartamento {
 			depa.setEmpleados(em);
 			departamentos.add(depa);
 
-			FileWriter file = new FileWriter(pathDepartamento, false);
+			FileWriter file = new FileWriter(pathDepartamento,true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = "Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados();
 			escr.append(registro + "\n");
@@ -65,7 +65,7 @@ public class GestionDepartamento {
 			emp.setDireccion(direccion);
 			emp.setDepartamentos(departamento);
 			empresas.add(emp);
-			FileWriter file = new FileWriter(pathEmpresa, false);
+			FileWriter file = new FileWriter(pathEmpresa, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = emp.getNombre() + " " + emp.getRuc() + " " + emp.getDireccion() + " "
 					+ emp.getDepartamentos();
@@ -152,6 +152,7 @@ public class GestionDepartamento {
 		return aux;
 
 	}
+	
 	public String leerEmpresa() throws IOException {
 		String aux = "";
 		try {

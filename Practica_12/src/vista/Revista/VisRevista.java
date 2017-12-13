@@ -19,8 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
-import javax.swing.ComboBoxModel;
-import java.util.Collections;
 
 import controlador.GestionRevista;
 import modelo.revista.Articulo;
@@ -138,9 +136,9 @@ public class VisRevista extends JInternalFrame implements ActionListener {
 
 	public void buscarArticulo() {
 		Vector mo = new Vector();
-		List<Articulo> rectores = gr.getArticulos();
-		for (int i = 0; i < rectores.size(); i++) {
-			Articulo rector = rectores.get(i);
+		List<Articulo> articulos = gr.getArticulos();
+		for (int i = 0; i < articulos.size(); i++) {
+			Articulo rector = articulos.get(i);
 			mo.addElement(rector);
 		}
 		escojerA = new JComboBox(mo);
@@ -170,6 +168,49 @@ public class VisRevista extends JInternalFrame implements ActionListener {
 
 	public void guardar() {
 
+		
+		
+		
+		
+		
+		
+		
+		
+		//VAZQUEZ FEO //
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		try {
 			if (gr.validarEspacio1(nombre.getText(), editorial.getText())) {
 				if (gr.validarChoose((Articulo) escojerA.getSelectedItem())) {
