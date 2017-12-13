@@ -202,7 +202,7 @@ public class VentanaJugador extends JInternalFrame implements ActionListener {
 	
 		try {
 
-			if(gd.buscarJugador(txtNombre.getText())==false)
+			if(gd.buscarJugador(txtNombre.getText())==false&&gd.validadorDeCedula(txtCedula.getText())==true)
 			{
 				gd.ingresarJugador(txtCedula.getText(), txtNombre.getText(), txtNacionalidad.getText(), Integer.parseInt(txtNumeroCamiseta.getText()));				
 			}			
