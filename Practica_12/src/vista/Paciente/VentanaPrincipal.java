@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,7 +20,7 @@ import VistaEquipo.Vista_Equipo;
 import VistaEquipo.Vista_Inscripcion;
 import VistaEquipo.Vista_Jugador;
 
-public class VentanaPrincipal extends JFrame implements ActionListener
+public class VentanaPrincipal extends JInternalFrame implements ActionListener
 {	
 	private JDesktopPane escritorio;
 	private controlador.GestionPaciente gd;
