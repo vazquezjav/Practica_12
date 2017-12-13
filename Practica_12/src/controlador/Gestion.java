@@ -18,9 +18,9 @@ import modelo.paciente.Paciente;
 import modelo.equipo.FichaInscripcion;
 
 public class Gestion {
-	private String pathEquipo =  "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Equipo.txt";;
-	private String pathJugador =  "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Jugador.txt";;
-	private String pathInscripcion =  "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Inscripcion.txt";;
+	private String pathEquipo =  "src/archivos/Equipo.txt";
+	private String pathJugador =  "src/archivos/Jugador.txt";
+	private String pathInscripcion =  "src/archivos/Inscripcion.txt";
 	
 	ArrayList<modelo.equipo.Equipo> equipo;
 	ArrayList<modelo.equipo.Jugador> jugador;
