@@ -16,15 +16,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import Controlador.Gestion;
+import controlador.Gestion;
 
 
 public class Vista_Equipo extends JInternalFrame implements ActionListener {
 
-	private Gestion gd;
+	private controlador.Gestion gd;
 	private JTable tablaEquipo;
 
-	public Vista_Equipo(Gestion gd) {
+	public Vista_Equipo(controlador.Gestion gd) {
 		Locale localizacion = Ventana.Localizacion;
 		ResourceBundle lang = ResourceBundle.getBundle("Idiomas.mensaje", localizacion);
 
