@@ -19,9 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Controlador.Gestion;
-import Modelo.Ficha_Inscripcion;
-import Modelo.Jugador;
+
+import modelo.equipo.FichaInscripcion;
 
 public class VentanaInscripcion extends JInternalFrame implements ActionListener {
 	private JTextField txtNombreEquipo;
@@ -32,9 +31,9 @@ public class VentanaInscripcion extends JInternalFrame implements ActionListener
 	private JButton guardar;
 	private JButton limpiar;
 	private JButton salir;
-	private Gestion gd;
+	private controlador.Gestion gd;
 
-	public VentanaInscripcion(Gestion gd) {
+	public VentanaInscripcion(controlador.Gestion gd) {
 		this.gd = gd;
 		initComponents();
 	}
@@ -215,9 +214,9 @@ public class VentanaInscripcion extends JInternalFrame implements ActionListener
 	}
 
 	private void listar() {
-		List<Ficha_Inscripcion> departamentos = gd.getInscripcion();
+		List<FichaInscripcion> departamentos = gd.getInscripcion();
 		for (int i = 0; i < departamentos.size(); i++) {
-			Ficha_Inscripcion  depa = departamentos.get(i);
+			FichaInscripcion  depa = departamentos.get(i);
 			System.out.println("Nombre Equipo :" + depa.getNombreEquipo() + " Nombre Jugador :"
 					+ depa.getNombreJugador() + " fecha Inico" + depa.getFechaInicio()+ " Fecha Finalizacion" + depa.getFechaFinalizacion());
 		}

@@ -19,9 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Controlador.Gestion;
-import Modelo.Equipo;
-import Modelo.Jugador;
+import controlador.Gestion;
+import modelo.equipo.*;
 
 public class VentanaJugador extends JInternalFrame implements ActionListener {
 	private JTextField txtCedula;
@@ -32,9 +31,9 @@ public class VentanaJugador extends JInternalFrame implements ActionListener {
 	private JButton guardar;
 	private JButton limpiar;
 	private JButton salir;
-	private Gestion gd;
+	private controlador.Gestion gd;
 
-	public VentanaJugador(Gestion gd) {
+	public VentanaJugador(controlador.Gestion gd) {
 		this.gd = gd;
 		initComponents();
 	}

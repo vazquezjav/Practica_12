@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import Controlador.Gestion;
+import controlador.Gestion;
 
 public class Vista_Jugador extends JInternalFrame implements ActionListener {
 

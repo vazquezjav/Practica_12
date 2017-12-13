@@ -12,7 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import Controlador.Gestion;
+import controlador.Gestion;
 
 public class Ventana extends JFrame implements ActionListener
 {	

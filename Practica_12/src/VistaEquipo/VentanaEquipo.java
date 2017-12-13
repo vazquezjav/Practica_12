@@ -19,8 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Controlador.Gestion;
-import Modelo.Equipo;
+import controlador.Gestion;
+import modelo.equipo.*;
 
 
 public class VentanaEquipo extends JInternalFrame implements ActionListener {
