@@ -204,6 +204,7 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 			break;
 		}
 	}
+
 	private void guardar() {
 		// TODO Auto-generated method stub
 		String nombreEm = txtNombreEm.getText();
@@ -212,18 +213,12 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		String nombreDepa = txtNombreDepa.getText();
 		String codigo = txtCodigo.getText();
 		try {
-			if (gd.isCedulaValida(cedula)) {
-				gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
-				JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
-						JOptionPane.INFORMATION_MESSAGE);
-				leer() ;
-				listar();
-				limpiar();
-			}else{
-				if (gd.isEsenci2(nombreEm, apellidoEm, cedula, nombreDepa, codigo)) {
+			if (gd.isEsenci2(nombreEm, apellidoEm, cedula, nombreDepa, codigo)) {
+				if (gd.isCedulaValida(cedula)) {
 					gd.agregarDepartamento(nombreEm, apellidoEm, cedula, nombreDepa, codigo);
 					limpiar();
-					leer() ;
+					leer();
+					listar();
 				}
 			}
 		} catch (Exception e) {
@@ -231,21 +226,22 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 
 			e.printStackTrace();
 		}
-		
+
 	}
-	
 
 	private void listar() {
 		List<Departamento> departamentos = gd.getDepartamentos();
 		for (int i = 0; i < departamentos.size(); i++) {
 			Departamento depa = departamentos.get(i);
-			System.out.println("Nombre del departamento :"+depa.getNombredepa()+" codigo del departamento :"+depa.getCodigo()+" "+depa.getEmpleados());
+			System.out.println("Nombre del departamento :" + depa.getNombredepa() + " codigo del departamento :"
+					+ depa.getCodigo() + " " + depa.getEmpleados());
 		}
 	}
 
 	public void leer() throws IOException {
 		txtListado.append(gd.leerDepartamento());
 	}
+
 	private void limpiar() {
 		txtNombreEm.setText("");
 		txtApellidoEm.setText("");
@@ -253,6 +249,7 @@ public class VisDepartamento extends JInternalFrame implements ActionListener {
 		txtNombreDepa.setText("");
 		txtCodigo.setText("");
 	}
+
 	private void salir() {
 		int opcion = JOptionPane.showConfirmDialog(this, "Usted esta saliend del programa ", "Confirmar",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);

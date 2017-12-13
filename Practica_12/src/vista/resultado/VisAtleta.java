@@ -28,7 +28,7 @@ import controlador.GestionResultado;
 import modelo.departamento.Departamento;
 import modelo.resultado.Atleta;
 
-public class VisAtleta extends JInternalFrame implements ActionListener{
+public class VisAtleta extends JInternalFrame implements ActionListener {
 	private JTextField txtNombreA;
 	private JTextField txtNumero;
 	private JTextField txtCedula;
@@ -39,10 +39,12 @@ public class VisAtleta extends JInternalFrame implements ActionListener{
 	private JButton limpiar;
 	private JButton salir;
 	private GestionResultado gres;
+
 	public VisAtleta(GestionResultado gres) {
 		this.gres = gres;
 		initComponents();
 	}
+
 	private void initComponents() {
 		// TODO Auto-generated method stub
 		setSize(800, 350);
@@ -179,11 +181,12 @@ public class VisAtleta extends JInternalFrame implements ActionListener{
 		dato.setBorder(BorderFactory.createTitledBorder(""));
 		cp.add(dato2, BorderLayout.SOUTH);
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String comando = e.getActionCommand();
-		System.out.println( comando);
+		System.out.println(comando);
 		switch (comando) {
 		case "btnSalir":
 			salir();
@@ -201,15 +204,45 @@ public class VisAtleta extends JInternalFrame implements ActionListener{
 			break;
 		}
 	}
+
 	private void guardar() {
 		String nombreA = txtNombreA.getText();
 		String numero = txtNumero.getText();
 		String cedula = txtCedula.getText();
 		String posicion = txtPosicion.getText();
-		String Timpo = txtTiempo.getText();
-		
-		
+		String tiempo = txtTiempo.getText();
+		// try {
+		// if (gres.isEsenci(nombreA, numero, cedula)) {
+		// gres.agregarAtleta(nombreA, cedula, numero, posicion, tiempo);
+		// limpiar();
+		// leer() ;
+		// listar();
+		// }
+		//
+		// } catch (Exception e) {
+		// JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de
+		// error", JOptionPane.ERROR_MESSAGE);
+		//
+		// e.printStackTrace();
+		// }
+		try {
+			if (gres.isEsenci(nombreA, numero, cedula)) {
+				if (gres.isCedulaValida(cedula)) {
+					gres.agregarAtleta(nombreA, cedula, numero, posicion, tiempo);
+					JOptionPane.showMessageDialog(this, "Datos Guardados", "Mensaje de informacion",
+							JOptionPane.INFORMATION_MESSAGE);
+					leer();
+					listar();
+					limpiar();
+				}
+			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+
+			e.printStackTrace();
+		}
 	}
+
 	private void limpiar() {
 		txtNombreA.setText("");
 		txtNumero.setText("");
@@ -217,16 +250,20 @@ public class VisAtleta extends JInternalFrame implements ActionListener{
 		txtTiempo.setText("");
 		txtPosicion.setText("");
 	}
-	public void leer() throws IOException{
+
+	public void leer() throws IOException {
 		txtListado.append(gres.leerAtleta());
 	}
+
 	private void listar() {
 		List<Atleta> atletas = gres.getAtletas();
 		for (int i = 0; i < atletas.size(); i++) {
 			Atleta at = atletas.get(i);
-			System.out.println("Nombre:"+at.getNombre()+" numero:"+at.getNumero()+",cedula"+at.getCedula()+",resultado:"+at.getResultado());
+			System.out.println("Nombre:" + at.getNombre() + " numero:" + at.getNumero() + ",cedula" + at.getCedula()
+					+ ",resultado:" + at.getResultados());
 		}
 	}
+
 	private void salir() {
 		int opcion = JOptionPane.showConfirmDialog(this, "Usted esta saliend del programa ", "Confirmar",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);

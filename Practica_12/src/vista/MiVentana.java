@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 
 import controlador.GestionDepartamento;
 import controlador.GestionPais;
+import controlador.GestionResultado;
 import controlador.GestionRevista;
 import vista.Pais.VisPais;
 import vista.Pais.VisProvincia;
@@ -35,6 +36,10 @@ import vista.departamento.VisDepartamento;
 import vista.departamento.VisEmpresa;
 import vista.departamento.VisTablaDepartamento;
 import vista.departamento.VisTablaEmpresa;
+import vista.resultado.VisAtleta;
+import vista.resultado.VisCompetancia;
+import vista.resultado.VisTablaAtleta;
+import vista.resultado.VisTablaCompetencia;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,13 +52,14 @@ public class MiVentana extends JFrame implements ActionListener {
 	private GestionRevista gr;
 	private GestionPais gp;
 	private GestionDepartamento gd;
+	private GestionResultado gres;
 
 	public MiVentana() {
 		initComplement();
 		gr = new GestionRevista();
-		gp= new GestionPais();
-		gd=new GestionDepartamento();
-		
+		gp = new GestionPais();
+		gd = new GestionDepartamento();
+		gres = new GestionResultado();
 	}
 
 	private void initComplement() {
@@ -84,8 +90,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		JMenu mnuVentanas6 = new JMenu("Departamento");
 		JMenuItem mnuVentanaDepa = new JMenuItem("Datos Departamento");
 		JMenuItem mnuVentanaEmpe = new JMenuItem("Empresa");
-		JMenuItem mnuVentanaListaDe = new JMenuItem("Listar Departamento");	
-		JMenuItem mnuVentanaListaEm = new JMenuItem("Listar Empresa");	
+		JMenuItem mnuVentanaListaDe = new JMenuItem("Listar Departamento");
+		JMenuItem mnuVentanaListaEm = new JMenuItem("Listar Empresa");
 		mnuVentanaDepa.addActionListener(this);
 		mnuVentanaDepa.setActionCommand("mnuVentanaDepa");
 		mnuVentanaEmpe.addActionListener(this);
@@ -99,54 +105,70 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnuVentanas6.add(mnuVentanaListaDe);
 		mnuVentanas6.add(mnuVentanaListaEm);
 
+		JMenu mnuVentanas7 = new JMenu("Atletas");
+		JMenuItem mnuVentanaAt = new JMenuItem("Datos Atleta");
+		JMenuItem mnuVentanaCom = new JMenuItem("Competencia");
+		JMenuItem mnuVentanaListaAt = new JMenuItem("Listar Atleta");
+		JMenuItem mnuVentanaListaCom = new JMenuItem("Listar Competencia");
+		mnuVentanaAt.addActionListener(this);
+		mnuVentanaAt.setActionCommand("mnuVentanaAt");
+		mnuVentanaCom.addActionListener(this);
+		mnuVentanaCom.setActionCommand("mnuVentanaCom");
+		mnuVentanaListaAt.addActionListener(this);
+		mnuVentanaListaAt.setActionCommand("mnuVentanaListaAt");
+		mnuVentanaListaCom.addActionListener(this);
+		mnuVentanaListaCom.setActionCommand("mnuVentanaListaCom");
+		mnuVentanas7.add(mnuVentanaAt);
+		mnuVentanas7.add(mnuVentanaCom);
+		mnuVentanas7.add(mnuVentanaListaAt);
+		mnuVentanas7.add(mnuVentanaListaCom);
+
 		JMenuItem mnuVentanaProvincia = new JMenuItem("Datos Provincia");
 		mnuVentanaProvincia.addActionListener(this);
 		mnuVentanaProvincia.setActionCommand("mnuVentanaProvincia");
 		mnuVentanas.add(mnuVentanaProvincia);
-		
+
 		JMenuItem mnuVentanaPais = new JMenuItem("Datos Pais");
 		mnuVentanaPais.addActionListener(this);
 		mnuVentanaPais.setActionCommand("mnuVentanaPais");
 		mnuVentanas.add(mnuVentanaPais);
-	
 
 		JMenu Listas = new JMenu("Listas");
-		
+
 		JMenuItem lisAutores = new JMenuItem("Lista Autores");
 		lisAutores.addActionListener(this);
 		lisAutores.setActionCommand("lisAutores");
 		Listas.add(lisAutores);
-		
+
 		JMenuItem lisArticulos = new JMenuItem("Lista Articulos");
 		lisArticulos.addActionListener(this);
 		lisArticulos.setActionCommand("lisArticulos");
 		Listas.add(lisArticulos);
-		
+
 		JMenuItem lisRevistas = new JMenuItem("Lista Revistas");
 		lisRevistas.addActionListener(this);
 		lisRevistas.setActionCommand("lisRevistas");
 		Listas.add(lisRevistas);
-		
+
 		JMenuItem lisCantones = new JMenuItem("Lista Cantones");
 		lisCantones.addActionListener(this);
 		lisCantones.setActionCommand("lisCantones");
 		Listas.add(lisCantones);
-		
+
 		JMenuItem lisProvincias = new JMenuItem("Lista Provincias");
 		lisProvincias.addActionListener(this);
 		lisProvincias.setActionCommand("lisProvincias");
 		Listas.add(lisProvincias);
-		
+
 		JMenuItem lisPaises = new JMenuItem("Lista Paises");
 		lisPaises.addActionListener(this);
 		lisPaises.setActionCommand("lisPaises");
 		Listas.add(lisPaises);
-
 		barra.add(mnuVentanas);
 		barra.add(Listas);
 		barra.add(mnuVentanas6);
+		barra.add(mnuVentanas7);
 		setJMenuBar(barra);
-
 	}
 
 	@Override
@@ -174,6 +196,18 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "mnuVentanaListaEm":
 			ListarEm();
 			break;
+		case "mnuVentanaAt":
+			datoAtleta();
+			break;
+		case "mnuVentanaCom":
+			datoCompetencia();
+			break;
+		case "mnuVentanaListaAt":
+			ListarAtleta();
+			break;
+		case "mnuVentanaListaCom":
+			ListarCompetencai();
+			break;
 		case "mnuVentanaProvincia":
 			datoProvincia();
 			break;
@@ -198,11 +232,10 @@ public class MiVentana extends JFrame implements ActionListener {
 		case "lisPaises":
 			listaPais();
 			break;
-		
-			}
+
+		}
 
 	}
-
 
 	public void datoRevista() {
 		VisRevista vr = new VisRevista(gr);
@@ -226,8 +259,9 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	public void datoProvincia(){
-		VisProvincia pr= new VisProvincia(gp);
+
+	public void datoProvincia() {
+		VisProvincia pr = new VisProvincia(gp);
 		pr.setVisible(true);
 		escritorio.add(pr);
 		try {
@@ -235,10 +269,11 @@ public class MiVentana extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	public void datoPais(){
-		VisPais ps= new VisPais(gp);
+
+	public void datoPais() {
+		VisPais ps = new VisPais(gp);
 		ps.setVisible(true);
 		escritorio.add(ps);
 		try {
@@ -249,7 +284,6 @@ public class MiVentana extends JFrame implements ActionListener {
 	}
 
 	private void datoDepartamento() {
-		// TODO Auto-generated method stub
 		VisDepartamento depa = new VisDepartamento(gd);
 		depa.setVisible(true);
 		escritorio.add(depa);
@@ -261,7 +295,6 @@ public class MiVentana extends JFrame implements ActionListener {
 	}
 
 	private void datoEmpresa() {
-		// TODO Auto-generated method stub
 		VisEmpresa emp = new VisEmpresa(gd);
 		emp.setVisible(true);
 		escritorio.add(emp);
@@ -271,22 +304,22 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-//Listar departamento
+
+	// Listar departamento
 	private void ListarDepa() {
-		// TODO Auto-generated method stub
-		VisTablaDepartamento tbldepa = new VisTablaDepartamento (gd);
-		tbldepa .setVisible(true);
-		escritorio.add(tbldepa );
+		VisTablaDepartamento tbldepa = new VisTablaDepartamento(gd);
+		tbldepa.setVisible(true);
+		escritorio.add(tbldepa);
 		try {
 			tbldepa.setSelected(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	private void ListarEm() {
-		// TODO Auto-generated method stub
 		VisTablaEmpresa tblem = new VisTablaEmpresa(gd);
-		tblem .setVisible(true);
+		tblem.setVisible(true);
 		escritorio.add(tblem);
 		try {
 			tblem.setSelected(true);
@@ -294,13 +327,56 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	///LISTAS
-	
-	public void listaAutor(){
-		VisTablaAutor ta= new VisTablaAutor(gr);
+
+	private void datoAtleta() {
+		VisAtleta atle = new VisAtleta(gres);
+		atle.setVisible(true);
+		escritorio.add(atle);
+		try {
+			atle.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void datoCompetencia() {
+		VisCompetancia com = new VisCompetancia(gres);
+		com.setVisible(true);
+		escritorio.add(com);
+		try {
+			com.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void ListarCompetencai() {
+		VisTablaCompetencia com = new VisTablaCompetencia(gres);
+		com.setVisible(true);
+		escritorio.add(com);
+		try {
+			com.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void ListarAtleta() {
+		VisTablaAtleta atle = new VisTablaAtleta(gres);
+		atle.setVisible(true);
+		escritorio.add(atle);
+		try {
+			atle.setSelected(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/// LISTAS
+
+	public void listaAutor() {
+		VisTablaAutor ta = new VisTablaAutor(gr);
 		ta.setVisible(true);
 		escritorio.add(ta);
 		try {
@@ -309,9 +385,9 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	
-	public void listaArticulo(){
-		VisTablaArticulo tar= new VisTablaArticulo(gr);
+
+	public void listaArticulo() {
+		VisTablaArticulo tar = new VisTablaArticulo(gr);
 		tar.setVisible(true);
 		escritorio.add(tar);
 		try {
@@ -319,11 +395,11 @@ public class MiVentana extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	public void listaRevista(){
-		VisTablaRevista tr= new VisTablaRevista(gr);
+
+	public void listaRevista() {
+		VisTablaRevista tr = new VisTablaRevista(gr);
 		tr.setVisible(true);
 		escritorio.add(tr);
 		try {
@@ -332,9 +408,9 @@ public class MiVentana extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	
-	public void listaCanton(){
-		VisTablaCanton tc= new VisTablaCanton(gp);
+
+	public void listaCanton() {
+		VisTablaCanton tc = new VisTablaCanton(gp);
 		tc.setVisible(true);
 		escritorio.add(tc);
 		try {
@@ -342,11 +418,11 @@ public class MiVentana extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	public void listaProvincia(){
-		VisTablaProvincia tp= new VisTablaProvincia(gp);
+
+	public void listaProvincia() {
+		VisTablaProvincia tp = new VisTablaProvincia(gp);
 		tp.setVisible(true);
 		escritorio.add(tp);
 		try {
@@ -354,11 +430,11 @@ public class MiVentana extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	public void listaPais(){
-		VisTablaPais tpa= new VisTablaPais(gp);
+
+	public void listaPais() {
+		VisTablaPais tpa = new VisTablaPais(gp);
 		tpa.setVisible(true);
 		escritorio.add(tpa);
 		try {
@@ -366,7 +442,6 @@ public class MiVentana extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 }

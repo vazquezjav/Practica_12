@@ -4,7 +4,7 @@ public class Atleta {
 private String nombre;
 private String cedula;
 private String numero;
-private Resultado resultado;
+private Resultado resultados;
 public String getNombre() {
 	return nombre;
 }
@@ -23,12 +23,11 @@ public String getNumero() {
 public void setNumero(String numero) {
 	this.numero = numero;
 }
-
-public Resultado getResultado() {
-	return resultado;
+public Resultado getResultados() {
+	return resultados;
 }
-public void setResultado(Resultado resultado) {
-	this.resultado = resultado;
+public void setResultados(Resultado resultados) {
+	this.resultados = resultados;
 }
 @Override
 public String toString() {
