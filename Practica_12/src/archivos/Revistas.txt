@@ -1,6 +1,3 @@
 DATOS DE LA REVISTA
 Nombre Revista=po Editoria=po Nombre Aticulo=pl
 DATOS DE LA REVISTA
-Nombre Revista=ol Editoria=ol Nombre Aticulo=pl
-DATOS DE LA REVISTA
-Nombre Revista=g1 Editoria=yo Nombre Aticulo=javier

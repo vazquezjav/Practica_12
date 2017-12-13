@@ -2,16 +2,3 @@
 DATOS DEL ARTICULO
 Tema=fi Idioma=es Nombre Autor=jav Apellido Autor=vaz Nacionalidaad Autor=ecu
 DATOS DEL ARTICULO
-Tema=oi Idioma=oi Nombre Autor=ouh Apellido Autor=oi Nacionalidaad Autor=oi
-DATOS DEL ARTICULO
-Tema=lol Idioma=olo Nombre Autor=po Apellido Autor=po Nacionalidaad Autor=po
-DATOS DEL ARTICULO
-Tema=lklk Idioma=lk Nombre Autor=lk Apellido Autor=lk Nacionalidaad Autor=lk
-DATOS DEL ARTICULO
-Tema=ok Idioma=ok Nombre Autor=k Apellido Autor=p Nacionalidaad Autor=ok
-DATOS DEL ARTICULO
-Tema=pl Idioma=pl Nombre Autor=pl Apellido Autor=pl Nacionalidaad Autor=pl
-DATOS DEL ARTICULO
-Tema=javier Idioma=yo que se Nombre Autor=Evelyn Apellido Autor=Pintado Nacionalidaad Autor=Ecuatoriana
-DATOS DEL ARTICULO
-Tema=ljljlkj Idioma=lkjl Nombre Autor=liwigil Apellido Autor=illefl Nacionalidaad Autor=llj
