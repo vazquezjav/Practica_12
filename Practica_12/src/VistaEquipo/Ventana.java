@@ -17,13 +17,13 @@ import Controlador.Gestion;
 public class Ventana extends JFrame implements ActionListener
 {	
 	private JDesktopPane escritorio;
-	private Gestion gd;
+	private controlador.Gestion gd;
 	public static Locale Localizacion;
 	private JMenu ingreso,listar,idiomas;
 	private JMenuItem inscripcion,español,ingles,equipo,jugador,ventanaEquipo,ventanaJugador,ventanaInscripcion;
 	public Ventana()
 	{
-		gd = new Gestion();
+		gd = new controlador.Gestion();
 		initComponentes();
 	}
 	public void initComponentes()

@@ -32,9 +32,9 @@ public class VentanaEquipo extends JInternalFrame implements ActionListener {
 	private JButton guardar;
 	private JButton limpiar;
 	private JButton salir;
-	private Gestion gd;
+	private controlador.Gestion gd;
 
-	public VentanaEquipo(Gestion gd) {
+	public VentanaEquipo(controlador.Gestion gd) {
 		this.gd = gd;
 		initComponents();
 	}
@@ -219,9 +219,9 @@ public class VentanaEquipo extends JInternalFrame implements ActionListener {
 	}
 
 	private void listar() {
-		List<Equipo> departamentos = gd.getEquipo();
+		List<modelo.equipo.Equipo> departamentos = gd.getEquipo();
 		for (int i = 0; i < departamentos.size(); i++) {
-			Equipo depa = departamentos.get(i);
+			modelo.equipo.Equipo depa = departamentos.get(i);
 			System.out.println("Nombre del Equipo :" + depa.getNombre() + " NumeroJugadores :"
 					+ depa.getNumeroJugadores() + " Nombre Diretor" + depa.getNombreDirector()+ " Numero de Asistentes" + depa.getNumeroAsistentes());
 		}

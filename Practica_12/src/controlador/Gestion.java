@@ -9,23 +9,24 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-import Modelo.Equipo;
-import Modelo.Ficha_Inscripcion;
-import Modelo.Jugador;
+import modelo.equipo.Equipo;
+import modelo.equipo.FichaInscripcion;
+import modelo.equipo.Jugador;
+import modelo.equipo.FichaInscripcion;
 
 public class Gestion {
 	private String pathEquipo =  "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Equipo.txt";;
 	private String pathJugador =  "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Jugador.txt";;
 	private String pathInscripcion =  "C:/Users/Derian Rivas/Desktop/Java2/Practica_12/Practica_12/src/archivos/Inscripcion.txt";;
 	
-	ArrayList<Equipo> equipo;
-	ArrayList<Jugador> jugador;
-	ArrayList<Ficha_Inscripcion> inscripcion;
+	ArrayList<modelo.equipo.Equipo> equipo;
+	ArrayList<modelo.equipo.Jugador> jugador;
+	ArrayList<FichaInscripcion> inscripcion;
 
 	public Gestion() {
-		equipo = new ArrayList<Equipo>();
-		jugador = new ArrayList<Jugador>();
-		inscripcion = new ArrayList<Ficha_Inscripcion>();
+		equipo = new ArrayList<modelo.equipo.Equipo>();
+		jugador = new ArrayList<modelo.equipo.Jugador>();
+		inscripcion = new ArrayList<FichaInscripcion>();
 	}
 
 	public void ingresarEquipo(String nombre, int numeroJugadore, String nombreDirector, int numeroAsistentes) {
@@ -41,7 +42,7 @@ public class Gestion {
 	}
 
 	public void inscripcionFicha(Equipo nombreEquipo, Jugador nombreJugador, Date fechaInicio, Date fechaFinalizacion) {
-		Ficha_Inscripcion f = new Ficha_Inscripcion(nombreEquipo, nombreJugador, fechaInicio, fechaFinalizacion);
+		FichaInscripcion f = new FichaInscripcion(nombreEquipo, nombreJugador, fechaInicio, fechaFinalizacion);
 		inscripcion.add(f);
 	}
 
@@ -135,7 +136,7 @@ public class Gestion {
 		return null;
 	}
 
-	public Ficha_Inscripcion buscarInscripcionp(String equipo, String nombre) {
+	public FichaInscripcion buscarInscripcionp(String equipo, String nombre) {
 		for (int i = 0; i < inscripcion.size(); i++) {
 			if (inscripcion.get(i).getNombreEquipo().equals(equipo)
 					&& inscripcion.get(i).getNombreJugador().equals(nombre)) {
@@ -163,11 +164,11 @@ public class Gestion {
 		this.jugador = jugador;
 	}
 
-	public ArrayList<Ficha_Inscripcion> getInscripcion() {
+	public ArrayList<FichaInscripcion> getInscripcion() {
 		return inscripcion;
 	}
 
-	public void setInscripcion(ArrayList<Ficha_Inscripcion> inscripcion) {
+	public void setInscripcion(ArrayList<FichaInscripcion> inscripcion) {
 		this.inscripcion = inscripcion;
 	}
 

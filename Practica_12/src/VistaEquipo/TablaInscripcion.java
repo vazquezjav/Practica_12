@@ -8,10 +8,10 @@ import java.util.ResourceBundle;
 
 import javax.swing.table.AbstractTableModel;
 
-import Modelo.Equipo;
-import Modelo.Ficha_Inscripcion;
-import Modelo.Jugador;
-
+import modelo.equipo.Equipo;
+import modelo.equipo.FichaInscripcion;
+import modelo.equipo.Jugador;
+import modelo.equipo.FichaInscripcion;
 public class TablaInscripcion extends AbstractTableModel {
 
 	Locale localizacion=Ventana.Localizacion;
@@ -19,14 +19,14 @@ public class TablaInscripcion extends AbstractTableModel {
 	
     public String[] columnas = { lang.getString("NombreEquipo"), lang.getString("NombreJugador"), lang.getString("FechaI"), lang.getString("FechaF")};
     public Class[] columnasTipos = { String.class, Integer.class, String.class, Integer.class};
-    private List<Ficha_Inscripcion> inscripcion;
+    private List<FichaInscripcion> inscripcion;
 
     public TablaInscripcion() {
       super();
-      inscripcion = new ArrayList<Ficha_Inscripcion>();
+      inscripcion = new ArrayList<FichaInscripcion>();
     }
     
-    public TablaInscripcion(List<Ficha_Inscripcion> inscripcio) {
+    public TablaInscripcion(List<FichaInscripcion> inscripcio) {
      super();
      this.inscripcion = inscripcio;
     }
@@ -38,7 +38,7 @@ public class TablaInscripcion extends AbstractTableModel {
       return inscripcion.size();
     }
     public void setValueAt(Object value, int row, int col) {
-    	Ficha_Inscripcion aspirante = (Ficha_Inscripcion)(inscripcion.get(row));
+    	FichaInscripcion aspirante = (FichaInscripcion)(inscripcion.get(row));
 
       switch (col) {
       case 0:
@@ -67,7 +67,7 @@ public class TablaInscripcion extends AbstractTableModel {
       return columnasTipos[col];
     }
     public Object getValueAt(int row, int col) {
-    	Ficha_Inscripcion aspirante =(Ficha_Inscripcion) inscripcion.get(row);
+    	FichaInscripcion aspirante =(FichaInscripcion) inscripcion.get(row);
 
       switch (col) {
       case 0:

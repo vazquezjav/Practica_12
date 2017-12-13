@@ -7,7 +7,11 @@ import java.util.ResourceBundle;
 
 import javax.swing.table.AbstractTableModel;
 
-import Modelo.Equipo;
+
+import modelo.equipo.Equipo;
+import modelo.equipo.FichaInscripcion;
+import modelo.equipo.Jugador;
+import modelo.equipo.FichaInscripcion;
 
 public class TablaEquipo  extends AbstractTableModel {
 
