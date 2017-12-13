@@ -1,8 +1,10 @@
 package controlador;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +14,7 @@ import javax.swing.JOptionPane;
 import modelo.equipo.Equipo;
 import modelo.equipo.FichaInscripcion;
 import modelo.equipo.Jugador;
+import modelo.paciente.Paciente;
 import modelo.equipo.FichaInscripcion;
 
 public class Gestion {
@@ -31,19 +34,62 @@ public class Gestion {
 
 	public void ingresarEquipo(String nombre, int numeroJugadore, String nombreDirector, int numeroAsistentes) {
 
-		Equipo e = new Equipo(nombre, numeroJugadore, nombreDirector, numeroAsistentes);
+		
+		
+		try {
+			Equipo e = new Equipo(nombre, numeroJugadore, nombreDirector, numeroAsistentes);
 
-		equipo.add(e);
+			equipo.add(e);
+		
+			FileWriter file = new FileWriter(pathEquipo, true);
+			BufferedWriter escr = new BufferedWriter(file);
+			String registro = e.getNombre()+" "+e.getNumeroJugadores()+" "+e.getNombreDirector()+" "+e.getNumeroAsistentes();
+			escr.append("DATOS DE LA PACIENTE"+"\n");
+			escr.append(registro + "\n");
+			escr.close();
+			file.close();}
+			catch (Exception e){
+				
+			}
 	}
 
 	public void ingresarJugador(String cedula, String nombre, String nacionalidad, int numeroCamiseta) {
-		Jugador j = new Jugador(cedula, nombre, nacionalidad, numeroCamiseta);
-		jugador.add(j);
+		
+		
+		try {
+			Jugador j = new Jugador(cedula, nombre, nacionalidad, numeroCamiseta);
+			jugador.add(j);
+		
+			FileWriter file = new FileWriter(pathJugador, true);
+			BufferedWriter escr = new BufferedWriter(file);
+			String registro =j.getCedula()+" "+j.getNombre()+" "+j.getNacionalidad()+" "+j.getNumeroCamiseta();
+			escr.append("DATOS DE LA jUGADOR"+"\n");
+			escr.append(registro + "\n");
+			escr.close();
+			file.close();}
+			catch (Exception e){
+				
+			}
+		
 	}
 
 	public void inscripcionFicha(Equipo nombreEquipo, Jugador nombreJugador, Date fechaInicio, Date fechaFinalizacion) {
-		FichaInscripcion f = new FichaInscripcion(nombreEquipo, nombreJugador, fechaInicio, fechaFinalizacion);
-		inscripcion.add(f);
+		
+		try {
+			FichaInscripcion f = new FichaInscripcion(nombreEquipo, nombreJugador, fechaInicio, fechaFinalizacion);
+			inscripcion.add(f);
+		
+			FileWriter file = new FileWriter(pathJugador, true);
+			BufferedWriter escr = new BufferedWriter(file);
+			String registro =f.getNombreEquipo()+" "+f.getNombreJugador()+" "+f.getFechaInicio()+" "+f.getFechaFinalizacion();
+			escr.append("DATOS DELA FICHA"+"\n");
+			escr.append(registro + "\n");
+			escr.close();
+			file.close();}
+			catch (Exception e){
+				
+			}
+		
 	}
 
 	public boolean validadorDeCedula(String cedula) {
