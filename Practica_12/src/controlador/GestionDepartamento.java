@@ -152,6 +152,7 @@ public class GestionDepartamento {
 		return aux;
 
 	}
+	
 	public String leerEmpresa() throws IOException {
 		String aux = "";
 		try {

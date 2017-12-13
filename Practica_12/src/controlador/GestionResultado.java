@@ -20,6 +20,7 @@ public class GestionResultado {
 	private List<Atleta> atletas;
 	private List<Resultado> resultados;
 	private List<Competencia> competencias;
+	
 	private String pathCompetencia = "src/archivos/Competencia.txt";
 	private String pathAtleta = "src/archivos/Atleta.txt";
 
