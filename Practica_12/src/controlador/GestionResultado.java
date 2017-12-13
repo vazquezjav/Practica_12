@@ -44,7 +44,7 @@ public class GestionResultado {
 			at.setResultados(res);
 			atletas.add(at);
 			
-			FileWriter file = new FileWriter(pathAtleta, false);
+			FileWriter file = new FileWriter(pathAtleta, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = "Nombre del Atleta:" + at.getNombre() + " cedula :" + at.getCedula() + "numero: "+ at.getNumero() + " posicion:" + res.getPosicion();
 			escr.append(registro + "\n");
@@ -62,7 +62,7 @@ public class GestionResultado {
 			com.setModalidad(modalidad);
 			com.setAtletas(atleta);
 			competencias.add(com);
-			FileWriter file = new FileWriter(pathCompetencia, false);
+			FileWriter file = new FileWriter(pathCompetencia, true);
 			BufferedWriter escr = new BufferedWriter(file);
 			String registro = "Tipo de competencia" + com.getTipo() + ",Modalidad:" + com.getModalidad() + "Atleta "
 					+ com.getAtletas();
