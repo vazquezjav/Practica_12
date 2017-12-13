@@ -14,8 +14,7 @@ import modelo.paciente.Paciente;
 
 public class TablaMedico extends AbstractTableModel {
 
-	Locale localizacion=Ventana.Localizacion;
-	ResourceBundle lang= ResourceBundle.getBundle("Idiomas.mensaje",localizacion);
+
 	
     public String[] columnas = { "Nombre","Cargo","Telefono","Codigo"};
     public Class[] columnasTipos = { String.class, String.class, String.class, String.class};

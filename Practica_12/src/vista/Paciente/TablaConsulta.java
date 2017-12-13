@@ -15,10 +15,7 @@ import modelo.paciente.Paciente;
 
 public class TablaConsulta extends AbstractTableModel {
 
-	Locale localizacion=Ventana.Localizacion;
-	ResourceBundle lang= ResourceBundle.getBundle("Idiomas.mensaje",localizacion);
-	
-    public String[] columnas = { "Paciente","Mecio","Fecha","Hora"};
+	public String[] columnas = { "Paciente","Mecio","Fecha","Hora"};
     public Class[] columnasTipos = { Paciente.class, Medico.class, String.class, String.class};
     private List<Consulta> aspirantes;
 
