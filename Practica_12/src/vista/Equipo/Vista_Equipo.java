@@ -1,4 +1,4 @@
-package VistaEquipo;
+package vista.Equipo;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,12 +18,13 @@ import javax.swing.JTextField;
 
 import controlador.Gestion;
 
-public class Vista_Inscripcion extends JInternalFrame implements ActionListener {
+
+public class Vista_Equipo extends JInternalFrame implements ActionListener {
 
 	private controlador.Gestion gd;
-	private JTable tablaInscripcion;
+	private JTable tablaEquipo;
 
-	public  Vista_Inscripcion(controlador.Gestion gd) {
+	public Vista_Equipo(controlador.Gestion gd) {
 		Locale localizacion = Ventana.Localizacion;
 		ResourceBundle lang = ResourceBundle.getBundle("Idiomas.mensaje", localizacion);
 
@@ -40,10 +41,10 @@ public class Vista_Inscripcion extends JInternalFrame implements ActionListener 
 		JLabel lblTitulo = new JLabel(lang.getString("VistaEquipo"));
 		pnlTitulo.add(lblTitulo);
 
-		tablaInscripcion = new JTable();
-		tablaInscripcion.setModel(new TablaInscripcion());
+		tablaEquipo = new JTable();
+		tablaEquipo.setModel(new TablaEquipo());
 
-		JScrollPane scrollPaneTabla = new JScrollPane(tablaInscripcion);
+		JScrollPane scrollPaneTabla = new JScrollPane(tablaEquipo);
 
 		JPanel pnlBotones = new JPanel(new FlowLayout());
 		JLabel nombre = new JLabel("NOMBRE");
@@ -83,7 +84,7 @@ public class Vista_Inscripcion extends JInternalFrame implements ActionListener 
 	}
 
 	public void cargarDatos() {
-		tablaInscripcion.setModel(new TablaInscripcion(gd.getInscripcion()));
+		tablaEquipo.setModel(new TablaEquipo(gd.getEquipo()));
 	
 		
 	}
@@ -98,6 +99,5 @@ public class Vista_Inscripcion extends JInternalFrame implements ActionListener 
 			JOptionPane.showMessageDialog(this, "CONTINUE", "CONFIRMAR", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
 
 }

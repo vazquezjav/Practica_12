@@ -1,4 +1,4 @@
-package VistaEquipo;
+package vista.Equipo;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,13 +18,12 @@ import javax.swing.JTextField;
 
 import controlador.Gestion;
 
+public class Vista_Jugador extends JInternalFrame implements ActionListener {
 
-public class Vista_Equipo extends JInternalFrame implements ActionListener {
+	private Gestion gd;
+	private JTable tablaJugador;
 
-	private controlador.Gestion gd;
-	private JTable tablaEquipo;
-
-	public Vista_Equipo(controlador.Gestion gd) {
+	public Vista_Jugador(Gestion gd) {
 		Locale localizacion = Ventana.Localizacion;
 		ResourceBundle lang = ResourceBundle.getBundle("Idiomas.mensaje", localizacion);
 
@@ -41,10 +40,10 @@ public class Vista_Equipo extends JInternalFrame implements ActionListener {
 		JLabel lblTitulo = new JLabel(lang.getString("VistaEquipo"));
 		pnlTitulo.add(lblTitulo);
 
-		tablaEquipo = new JTable();
-		tablaEquipo.setModel(new TablaEquipo());
+		 tablaJugador = new JTable();
+		 tablaJugador.setModel(new TablaJugador());
 
-		JScrollPane scrollPaneTabla = new JScrollPane(tablaEquipo);
+		JScrollPane scrollPaneTabla = new JScrollPane(tablaJugador);
 
 		JPanel pnlBotones = new JPanel(new FlowLayout());
 		JLabel nombre = new JLabel("NOMBRE");
@@ -84,7 +83,7 @@ public class Vista_Equipo extends JInternalFrame implements ActionListener {
 	}
 
 	public void cargarDatos() {
-		tablaEquipo.setModel(new TablaEquipo(gd.getEquipo()));
+		tablaJugador.setModel(new TablaJugador(gd.getJugador()));
 	
 		
 	}
@@ -99,5 +98,6 @@ public class Vista_Equipo extends JInternalFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "CONTINUE", "CONFIRMAR", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
+
 
 }

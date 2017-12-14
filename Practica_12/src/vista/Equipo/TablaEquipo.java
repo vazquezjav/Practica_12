@@ -1,4 +1,4 @@
-package VistaEquipo;
+package vista.Equipo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,51 +7,52 @@ import java.util.ResourceBundle;
 
 import javax.swing.table.AbstractTableModel;
 
+
 import modelo.equipo.Equipo;
 import modelo.equipo.FichaInscripcion;
 import modelo.equipo.Jugador;
 import modelo.equipo.FichaInscripcion;
 
-public class TablaJugador extends AbstractTableModel {
+public class TablaEquipo  extends AbstractTableModel {
 
 	Locale localizacion=Ventana.Localizacion;
 	ResourceBundle lang= ResourceBundle.getBundle("Idiomas.mensaje",localizacion);
 	
-    public String[] columnas = { lang.getString("Cedula"), lang.getString("Nombre"), lang.getString("Nacionalidad"), lang.getString("NumeroCamiseta")};
+    public String[] columnas = { lang.getString("Nombre"), lang.getString("NumerodeJugadores"), lang.getString("NombredelDirector"), lang.getString("NuemroAsistentes")};
     public Class[] columnasTipos = { String.class, Integer.class, String.class, Integer.class};
-    private List<Jugador> jugadores;
+    private List<Equipo> aspirantes;
 
-    public TablaJugador() {
+    public TablaEquipo() {
       super();
-      jugadores = new ArrayList<Jugador>();
+      aspirantes = new ArrayList<Equipo>();
     }
     
-    public TablaJugador(List<Jugador> jugador) {
+    public TablaEquipo(List<Equipo> aspirantes) {
      super();
-     this.jugadores = jugador;
+     this.aspirantes = aspirantes;
     }
     
     public int getColumnCount() {
       return columnas.length;
     }
     public int getRowCount() {
-      return jugadores.size();
+      return aspirantes.size();
     }
     public void setValueAt(Object value, int row, int col) {
-     Jugador aspirante = (Jugador)(jugadores.get(row));
+     Equipo aspirante = (Equipo)(aspirantes.get(row));
 
       switch (col) {
       case 0:
-    	aspirante.setCedula(((String) value));
+    	aspirante.setNombre(((String) value));
         break;
       case 1:
-        aspirante.setNombre((String) value);
+        aspirante.setNumeroJugadores((int) value);
         break;
       case 2:
-        aspirante.setNacionalidad((String) value);
+        aspirante.setNombreDirector((String) value);
         break;
       case 3:
-	    aspirante.setNumeroCamiseta((int) value);;
+	    aspirante.setNumeroAsistentes((int) value);;
 	        break;
      
       default:
@@ -67,17 +68,17 @@ public class TablaJugador extends AbstractTableModel {
       return columnasTipos[col];
     }
     public Object getValueAt(int row, int col) {
-      Jugador aspirante =(Jugador) jugadores.get(row);
+      Equipo aspirante =(Equipo) aspirantes.get(row);
 
       switch (col) {
       case 0:
-        return aspirante.getCedula();
-      case 1:
         return aspirante.getNombre();
+      case 1:
+        return aspirante.getNumeroJugadores();
       case 2:
-	    return aspirante.getNacionalidad();
+	    return aspirante.getNombreDirector();
       case 3:
-        return aspirante.getNumeroCamiseta();
+        return aspirante.getNumeroAsistentes();
    
       default:
         break;

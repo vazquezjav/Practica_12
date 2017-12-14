@@ -19,7 +19,7 @@ public class GestionPaciente
 	ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 	private String pathPaciente = "src/archivos/Paciente.txt";
 	private String pathMedico = "src/archivos/Medico.txt";
-	private String pathConsulta = "src/archivos/Consulta.txt";
+	private String pathConsulta = "src/archivos/Conculta.txt";
 	public void ingresarPaciente(String cedula, String nombre, String apellido, String telefono)
 	{
 		try {

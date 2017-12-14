@@ -17,8 +17,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controlador.GestionPaciente;
-import VistaEquipo.TablaEquipo;
-import VistaEquipo.Ventana;
+import vista.Equipo.TablaEquipo;
+import vista.Equipo.Ventana;
 
 public class VistaConsulta  extends JInternalFrame implements ActionListener {
 

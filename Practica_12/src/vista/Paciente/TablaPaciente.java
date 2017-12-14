@@ -7,9 +7,9 @@ import java.util.ResourceBundle;
 
 import javax.swing.table.AbstractTableModel;
 
-import VistaEquipo.Ventana;
 import modelo.paciente.Medico;
 import modelo.paciente.Paciente;
+import vista.Equipo.Ventana;
 
 public class TablaPaciente extends AbstractTableModel {
 

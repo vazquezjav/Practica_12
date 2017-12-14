@@ -1,58 +1,57 @@
-package VistaEquipo;
+package vista.Equipo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.table.AbstractTableModel;
 
-
 import modelo.equipo.Equipo;
 import modelo.equipo.FichaInscripcion;
 import modelo.equipo.Jugador;
 import modelo.equipo.FichaInscripcion;
-
-public class TablaEquipo  extends AbstractTableModel {
+public class TablaInscripcion extends AbstractTableModel {
 
 	Locale localizacion=Ventana.Localizacion;
 	ResourceBundle lang= ResourceBundle.getBundle("Idiomas.mensaje",localizacion);
 	
-    public String[] columnas = { lang.getString("Nombre"), lang.getString("NumerodeJugadores"), lang.getString("NombredelDirector"), lang.getString("NuemroAsistentes")};
+    public String[] columnas = { lang.getString("NombreEquipo"), lang.getString("NombreJugador"), lang.getString("FechaI"), lang.getString("FechaF")};
     public Class[] columnasTipos = { String.class, Integer.class, String.class, Integer.class};
-    private List<Equipo> aspirantes;
+    private List<FichaInscripcion> inscripcion;
 
-    public TablaEquipo() {
+    public TablaInscripcion() {
       super();
-      aspirantes = new ArrayList<Equipo>();
+      inscripcion = new ArrayList<FichaInscripcion>();
     }
     
-    public TablaEquipo(List<Equipo> aspirantes) {
+    public TablaInscripcion(List<FichaInscripcion> inscripcio) {
      super();
-     this.aspirantes = aspirantes;
+     this.inscripcion = inscripcio;
     }
     
     public int getColumnCount() {
       return columnas.length;
     }
     public int getRowCount() {
-      return aspirantes.size();
+      return inscripcion.size();
     }
     public void setValueAt(Object value, int row, int col) {
-     Equipo aspirante = (Equipo)(aspirantes.get(row));
+    	FichaInscripcion aspirante = (FichaInscripcion)(inscripcion.get(row));
 
       switch (col) {
       case 0:
-    	aspirante.setNombre(((String) value));
+    	aspirante.setNombreEquipo(((Equipo) value));
         break;
       case 1:
-        aspirante.setNumeroJugadores((int) value);
+        aspirante.setNombreJugador((Jugador) value);
         break;
       case 2:
-        aspirante.setNombreDirector((String) value);
+        aspirante.setFechaInicio((Date) value);
         break;
       case 3:
-	    aspirante.setNumeroAsistentes((int) value);;
+	    aspirante.setFechaFinalizacion((Date) value);;
 	        break;
      
       default:
@@ -68,17 +67,17 @@ public class TablaEquipo  extends AbstractTableModel {
       return columnasTipos[col];
     }
     public Object getValueAt(int row, int col) {
-      Equipo aspirante =(Equipo) aspirantes.get(row);
+    	FichaInscripcion aspirante =(FichaInscripcion) inscripcion.get(row);
 
       switch (col) {
       case 0:
-        return aspirante.getNombre();
+        return aspirante.getNombreEquipo();
       case 1:
-        return aspirante.getNumeroJugadores();
+        return aspirante.getNombreJugador();
       case 2:
-	    return aspirante.getNombreDirector();
+	    return aspirante.getFechaInicio();
       case 3:
-        return aspirante.getNumeroAsistentes();
+        return aspirante.getFechaFinalizacion();
    
       default:
         break;

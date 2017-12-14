@@ -13,12 +13,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import VistaEquipo.VentanaEquipo;
-import VistaEquipo.VentanaInscripcion;
-import VistaEquipo.VentanaJugador;
-import VistaEquipo.Vista_Equipo;
-import VistaEquipo.Vista_Inscripcion;
-import VistaEquipo.Vista_Jugador;
+import vista.Equipo.VentanaEquipo;
+import vista.Equipo.VentanaInscripcion;
+import vista.Equipo.VentanaJugador;
+import vista.Equipo.Vista_Equipo;
+import vista.Equipo.Vista_Inscripcion;
+import vista.Equipo.Vista_Jugador;
 
 public class VentanaPrincipal extends JInternalFrame implements ActionListener
 {	

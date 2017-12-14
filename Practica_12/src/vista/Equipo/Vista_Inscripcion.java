@@ -1,4 +1,4 @@
-package VistaEquipo;
+package vista.Equipo;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,12 +18,12 @@ import javax.swing.JTextField;
 
 import controlador.Gestion;
 
-public class Vista_Jugador extends JInternalFrame implements ActionListener {
+public class Vista_Inscripcion extends JInternalFrame implements ActionListener {
 
-	private Gestion gd;
-	private JTable tablaJugador;
+	private controlador.Gestion gd;
+	private JTable tablaInscripcion;
 
-	public Vista_Jugador(Gestion gd) {
+	public  Vista_Inscripcion(controlador.Gestion gd) {
 		Locale localizacion = Ventana.Localizacion;
 		ResourceBundle lang = ResourceBundle.getBundle("Idiomas.mensaje", localizacion);
 
@@ -40,10 +40,10 @@ public class Vista_Jugador extends JInternalFrame implements ActionListener {
 		JLabel lblTitulo = new JLabel(lang.getString("VistaEquipo"));
 		pnlTitulo.add(lblTitulo);
 
-		 tablaJugador = new JTable();
-		 tablaJugador.setModel(new TablaJugador());
+		tablaInscripcion = new JTable();
+		tablaInscripcion.setModel(new TablaInscripcion());
 
-		JScrollPane scrollPaneTabla = new JScrollPane(tablaJugador);
+		JScrollPane scrollPaneTabla = new JScrollPane(tablaInscripcion);
 
 		JPanel pnlBotones = new JPanel(new FlowLayout());
 		JLabel nombre = new JLabel("NOMBRE");
@@ -83,7 +83,7 @@ public class Vista_Jugador extends JInternalFrame implements ActionListener {
 	}
 
 	public void cargarDatos() {
-		tablaJugador.setModel(new TablaJugador(gd.getJugador()));
+		tablaInscripcion.setModel(new TablaInscripcion(gd.getInscripcion()));
 	
 		
 	}

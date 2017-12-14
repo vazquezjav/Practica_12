@@ -271,7 +271,7 @@ public class MiVentana extends JFrame implements ActionListener {
 	}
 	
 	public void Jugador() {
-		VistaEquipo.Ventana vr = new VistaEquipo.Ventana();
+		vista.Equipo.Ventana vr = new vista.Equipo.Ventana();
 		vr.setVisible(true);
 		escritorio.add(vr);
 		try {

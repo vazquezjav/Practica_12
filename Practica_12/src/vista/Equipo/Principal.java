@@ -1,4 +1,4 @@
-package VistaEquipo;
+package vista.Equipo;
 
 public class Principal {
 
